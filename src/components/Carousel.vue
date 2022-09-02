@@ -16,28 +16,29 @@ onMounted(() => {
 });
 
 function next() {
-    console.log(1);
     if (state.transitioning) return;
+    state.transitioning = true;
     moveLeft();
     setTimeout(() => {
-        console.log(3);
         const slide = state.slides.shift();
         state.slides.push(slide);
         resetTranslation();
+        state.transitioning = false;
     }, 1000);
 }
 function previous() {
     if (state.transitioning) return;
+    state.transitioning = true;
     moveRight();
     setTimeout(() => {
         const slide = state.slides.pop();
         state.slides.unshift(slide);
         resetTranslation();
+        state.transitioning = false;
     }, 1000);
 }
 
 function moveLeft() {
-    console.log(2);
     innerStyles.transition = "transform 1s ease";
     innerStyles.transform = `translateX(-${2 * step}px)`;
 }
