@@ -1,31 +1,25 @@
 <script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
+import MenuHaut from "./components/MenuHaut.vue";
+import Carousel from "./components/Carousel.vue";
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+    <Carousel></Carousel>
+    <MenuHaut></MenuHaut>
+    <div class="curriculum">
+        <header>
+            <h1>Emma Vergne</h1>
+            <p>Je suis une designer culinaire</p>
+        </header>
+    </div>
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
+.curriculum {
+    font-family: "Public Sans", serif;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+.curriculum h1 {
+    font-family: "Inknut Antiqua", serif;
+    font-size: 2.4rem;
 }
 </style>
