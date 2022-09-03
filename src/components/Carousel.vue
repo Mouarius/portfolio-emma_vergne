@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, reactive, ref } from "vue";
+import { onBeforeMount, onMounted, onUnmounted, reactive, ref } from "vue";
 const delay = 10000;
 const state = reactive({
     transitioning: false,
@@ -10,19 +10,35 @@ const state = reactive({
         { id: 2, src: "/src/assets/img/carousel/pexels-elle-hughes-1660030.jpg", alt: "" },
     ],
     innerStyles: {},
+    width: 0,
+    height: 0,
+    step: window.innerWidth,
 });
-let step = window.innerWidth;
+
+onBeforeMount(() => {
+    window.addEventListener("resize", updateDimensions);
+});
 
 onMounted(() => {
+    updateDimensions();
     resetTranslation();
     setInterval(() => {
         next();
     }, delay);
 });
 
-let start = Date.now();
+onUnmounted(() => {
+    window.removeEventListener("resize", updateDimensions);
+});
+
+function updateDimensions() {
+    state.width = document.documentElement.clientWidth;
+    state.height = document.documentElement.clientHeight;
+    state.step = state.width;
+    resetTranslation();
+}
+
 function next() {
-    start = Date.now();
     if (state.transitioning) return;
     state.transitioning = true;
     moveLeft();
@@ -33,6 +49,7 @@ function next() {
         state.transitioning = false;
     }, 1200);
 }
+
 function previous() {
     if (state.transitioning) return;
     state.transitioning = true;
@@ -46,22 +63,21 @@ function previous() {
 }
 
 function moveLeft() {
-    console.log(Date.now() - start);
-    state.innerStyles = { transform: `translateX(-${2 * step}px)` };
+    state.innerStyles = { transform: `translateX(-${2 * state.step}px)` };
 }
 
 function moveRight() {
     state.innerStyles = { transform: `translateX(0)` };
 }
 function resetTranslation() {
-    state.innerStyles = { transition: "none", transform: `translateX(-${step}px)` };
+    state.innerStyles = { transition: "none", transform: `translateX(-${state.step}px)` };
 }
 </script>
 
 <template>
     <div class="carousel">
         <div class="inner" :style="state.innerStyles">
-            <img v-for="slide in state.slides" class="slide" :src="slide.src" :alt="slide.alt" :key="slide.id" />
+            <img v-for="slide in state.slides" class="slide" :src="slide.src" :alt="slide.alt" :key="slide.id" :style="{ width: `${state.width}px` }" />
         </div>
         <button class="prev" @click="previous"><font-awesome-icon icon="fa-solid fa-chevron-left" /></button>
         <button class="next" @click="next"><font-awesome-icon icon="fa-solid fa-chevron-right" /></button>
@@ -79,15 +95,16 @@ function resetTranslation() {
     width: 100vw;
 }
 .inner {
-    display: flex;
+    display: inline-flex;
     flex-direction: row;
-    height: 100%;
+    height: 90vh;
     white-space: nowrap;
     transition: transform 1s ease-in-out;
 }
 .slide {
     display: inline-flex;
     object-fit: cover;
+    box-sizing: border-box;
     width: 100vw;
     height: 100vh;
 }
