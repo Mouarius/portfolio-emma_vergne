@@ -1,13 +1,25 @@
 <script setup>
 import { onBeforeMount, onMounted, onUnmounted, reactive, ref } from "vue";
 const delay = 10000;
+const imagePath = "/src/assets/img/carousel";
 const state = reactive({
     transitioning: false,
     slides: [
-        //TODO: prendre tous les fichiers dans le dossier carousel
-        { id: 0, src: "/src/assets/img/carousel/pexels-elevate-1267320.jpg", alt: "" },
-        { id: 1, src: "/src/assets/img/carousel/pexels-ella-olsson-1640773.jpg", alt: "" },
-        { id: 2, src: "/src/assets/img/carousel/pexels-elle-hughes-1660030.jpg", alt: "" },
+        //TODO: make an easier way to modify the images (loading them from json file easily editable ?)
+        { id: 0, src: `${imagePath}/buche_2.jpg`, alt: "" },
+        { id: 1, src: `${imagePath}/co-pain_1.jpg`, alt: "" },
+        { id: 2, src: `${imagePath}/co-pain_4.jpg`, alt: "" },
+        { id: 3, src: `${imagePath}/dzume_4.jpg`, alt: "" },
+        { id: 4, src: `${imagePath}/dzume_7.jpg`, alt: "" },
+        { id: 5, src: `${imagePath}/dzume_10.jpg`, alt: "" },
+        { id: 6, src: `${imagePath}/dzume_11.jpg`, alt: "" },
+        { id: 7, src: `${imagePath}/gelification_4.jpg`, alt: "" },
+        { id: 8, src: `${imagePath}/gelification_6.jpg`, alt: "" },
+        { id: 9, src: `${imagePath}/gelification_8.jpg`, alt: "" },
+        { id: 10, src: `${imagePath}/maif_0.jpg`, alt: "" },
+        { id: 12, src: `${imagePath}/maif_7.jpg`, alt: "" },
+        { id: 13, src: `${imagePath}/st_brieuc_1.jpg`, alt: "" },
+        { id: 14, src: `${imagePath}/st_brieuc_5.jpg`, alt: "" },
     ],
     innerStyles: {},
     width: 0,
@@ -97,7 +109,7 @@ function resetTranslation() {
 .inner {
     display: inline-flex;
     flex-direction: row;
-    height: 90vh;
+    height: 100vh;
     white-space: nowrap;
     transition: transform 1s ease-in-out;
 }
