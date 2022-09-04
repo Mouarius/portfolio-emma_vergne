@@ -6,13 +6,14 @@ const state = reactive({
     transitioning: false,
     slides: [
         //TODO: make an easier way to modify the images (loading them from json file easily editable ?)
-        { id: 0, src: `${imagePath}/buche_2.jpg`, alt: "" },
-        { id: 1, src: `${imagePath}/co-pain_1.jpg`, alt: "" },
+        //TODO: make a random order for the photos
+        { id: 0, src: `${imagePath}/co-pain_1.jpg`, alt: "" },
+        { id: 1, src: `${imagePath}/dzume_11.jpg`, alt: "" },
         { id: 2, src: `${imagePath}/co-pain_4.jpg`, alt: "" },
-        { id: 3, src: `${imagePath}/dzume_4.jpg`, alt: "" },
-        { id: 4, src: `${imagePath}/dzume_7.jpg`, alt: "" },
-        { id: 5, src: `${imagePath}/dzume_10.jpg`, alt: "" },
-        { id: 6, src: `${imagePath}/dzume_11.jpg`, alt: "" },
+        { id: 3, src: `${imagePath}/dzume_7.jpg`, alt: "" },
+        { id: 4, src: `${imagePath}/dzume_10.jpg`, alt: "" },
+        { id: 5, src: `${imagePath}/buche_2.jpg`, alt: "" },
+        { id: 6, src: `${imagePath}/dzume_4.jpg`, alt: "" },
         { id: 7, src: `${imagePath}/gelification_4.jpg`, alt: "" },
         { id: 8, src: `${imagePath}/gelification_6.jpg`, alt: "" },
         { id: 9, src: `${imagePath}/gelification_8.jpg`, alt: "" },

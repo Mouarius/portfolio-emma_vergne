@@ -2,11 +2,14 @@
 
 <template>
     <header>
-        <h1>Emma Vergne</h1>
-        <div class="menu-droite">
-            <a href="/projets">projets</a><a href="/contact" class="contact">contact</a
-            ><a href="https://www.instagram.com/emmavergne/" class="instagram"><font-awesome-icon icon="fa-brands fa-instagram" /></a>
-        </div>
+        <router-link class="link" to="/"><h1>Emma Vergne</h1></router-link>
+        <ul class="menu-droite">
+            <li><router-link class="link projets" to="/projets">projets</router-link></li>
+            <li><router-link class="link contact" to="/contact">contact</router-link></li>
+            <li>
+                <a href="https://www.instagram.com/emmavergne/" class="link instagram"><font-awesome-icon icon="fa-brands fa-instagram" /></a>
+            </li>
+        </ul>
     </header>
 </template>
 
@@ -37,12 +40,16 @@ h1 {
     font-size: 1.2rem;
     justify-content: space-between;
 }
-a {
-    padding-left: 2rem;
+.link {
     color: black;
+    cursor: pointer;
     text-decoration: none;
 }
+li {
+    padding-left: 2rem;
+}
 .instagram {
+    color: black;
     font-size: 1.6rem;
 }
 </style>
