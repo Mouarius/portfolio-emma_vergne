@@ -16,7 +16,7 @@
 <style scoped>
 header {
     font-family: "Inknut Antiqua", serif;
-    font-size: 1.6rem;
+    font-size: 2rem;
 
     position: fixed;
     z-index: 10;
@@ -27,12 +27,13 @@ header {
     align-items: baseline;
     justify-content: space-between;
 
-    padding-left: 1.6em;
-    padding-right: 1.6em;
+    padding-left: 52px;
+    padding-right: 52px;
     padding-top: 1em;
 }
 h1 {
     font-weight: 600;
+    text-shadow: 2px 2px rgb(230, 230, 230);
 }
 .menu-droite {
     display: flex;

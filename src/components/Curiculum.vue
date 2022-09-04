@@ -37,6 +37,7 @@ import ContactCard from "./ContactCard.vue";
 <style lang="scss" scoped>
 .curriculum {
     font-family: "Public Sans", serif;
+    border: solid 1px green;
     display: flex;
     align-items: center;
     justify-content: center;

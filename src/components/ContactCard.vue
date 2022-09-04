@@ -54,6 +54,7 @@
     position: relative;
     border: solid 3px black;
     border-radius: 28px;
+    min-width: 22rem;
     width: 22rem;
     height: 11rem;
 
