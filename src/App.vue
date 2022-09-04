@@ -9,17 +9,186 @@ import Carousel from "./components/Carousel.vue";
     <div class="curriculum">
         <header>
             <h1>Emma Vergne</h1>
-            <p>Je suis une designer culinaire</p>
+            <p class="description">
+                Suspendisse maximus ligula et tellus fermentum, nec faucibus libero fermentum. Quisque vitae dolor gravida justo suscipit congue a nec dolor. Sed vel ipsum id magna condimentum
+                faucibus vel sed eros. Praesent vitae vehicula eros, ac laoreet mi.
+            </p>
         </header>
+        <section>
+            <ul class="path">
+                <li class="breakpoint rot-left">
+                    <h2>Mon parcours</h2>
+                    <p>description</p>
+                </li>
+                <li class="breakpoint rot-right">
+                    <h2>Ma démarche</h2>
+                    <p>description</p>
+                </li>
+                <li class="breakpoint rot-left">
+                    <h2>Mes travaux</h2>
+                    <p>description</p>
+                </li>
+            </ul>
+            <div class="contact">
+                <h2 class="rot-right">On en discute ?</h2>
+                <div class="card rot-left">
+                    <h3>Emma · Vergne</h3>
+                    <div class="photo"></div>
+                    <address>
+                        <a class="telephone anim-lev-top" href="tel:+33684163629">+33 6 84 16 36 29</a>
+                        <br />
+                        <a class="anim-lev-bot" href="mailto:contact@emma-vergne.fr"> contact@emma-vergne.fr </a> <br /><br />
+                        2 rue du Président Franklin Roosevelt <br />
+                        51000 Reims
+                    </address>
+                </div>
+            </div>
+        </section>
     </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .curriculum {
     font-family: "Public Sans", serif;
-}
-.curriculum h1 {
-    font-family: "Inknut Antiqua", serif;
-    font-size: 2.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    h1 {
+        font-family: "Inknut Antiqua", serif;
+        font-size: 2.8rem;
+        margin-top: 48px;
+    }
+    h2 {
+        font-family: "Inknut Antiqua", serif;
+        font-size: 1.8rem;
+    }
+
+    header {
+        text-align: center;
+
+        .description {
+            margin-top: 1rem;
+            width: 48rem;
+        }
+    }
+    .breakpoint {
+        transform-origin: center;
+        display: block;
+        text-align: center;
+        margin-top: 60px;
+        border: solid 1px red;
+    }
+    .contact {
+        margin-top: 120px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .telephone::before {
+        content: "cliquez pour appeler !";
+        display: block;
+        position: absolute;
+        right: 0;
+        opacity: 0;
+        font-size: 1rem;
+        color: blue;
+        transition: opacity 01s;
+        transition: transform 0.5s ease;
+        transform: translate(0);
+    }
+    .telephone:hover {
+        &::before {
+            opacity: 1;
+            transform: translate(1.4rem, -1.1rem);
+        }
+    }
+
+    .e-mail::before {
+        content: "appeler";
+        display: block;
+        position: absolute;
+        right: 0;
+        opacity: 0;
+        font-size: 1rem;
+        color: blue;
+        transition: opacity 0.3s;
+        transition: transform 0.4s ease;
+    }
+    .e-mail:hover {
+        &::before {
+            opacity: 1;
+            transform: translate(1.4rem, -1.2rem);
+        }
+    }
+
+    .card {
+        position: relative;
+        border: solid 3px black;
+        border-radius: 28px;
+        width: 22rem;
+        height: 11rem;
+
+        margin-top: 60px;
+        margin-bottom: 60px;
+        padding: 2rem 2.4rem;
+
+        font-size: 1.2rem;
+        font-weight: 600;
+        .photo {
+            display: inline-block;
+            position: absolute;
+            height: 5.4rem;
+            width: 5.4rem;
+            border-radius: 100%;
+            background-color: rgb(206, 206, 206);
+            border: solid 2px black;
+            right: 2rem;
+            top: 1.6rem;
+        }
+        a {
+            color: black;
+            text-decoration: none;
+            background-color: white;
+        }
+        address {
+            margin-top: 3rem;
+        }
+        h3 {
+            font-weight: 800;
+            font-size: 1.4rem;
+        }
+    }
+    .rot-right {
+        transition: transform 0.2s ease;
+        transform-origin: center;
+        transform: rotate(4deg);
+        &:hover {
+            transform: rotate(8deg);
+        }
+    }
+    .rot-left {
+        transition: transform 0.2s ease;
+        transform-origin: center;
+        transform: rotate(-4deg);
+        &:hover {
+            transform: rotate(-8deg);
+        }
+    }
+    .anim-lev-top {
+        display: inline-block;
+        transition: transform 0.2s ease;
+        &:hover {
+            transform: translate(2px, -4px);
+        }
+    }
+    .anim-lev-bot {
+        display: inline-block;
+        transition: transform 0.2s ease;
+        &:hover {
+            transform: translate(2px, 4px);
+        }
+    }
 }
 </style>
