@@ -12,6 +12,8 @@ import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { createWebHistory, createRouter } from "vue-router";
 
+export const carouselImages = import.meta.glob("./assets/img/carousel/*.jpg"); /** */
+
 const routes = [
     { path: "/", component: Home },
     { path: "/projets", component: Projets },

@@ -1,27 +1,23 @@
 <script setup>
 import { onBeforeMount, onMounted, onUnmounted, reactive, ref } from "vue";
+
 const delay = 10000;
-const imagePath = "/src/assets/img/carousel";
+
+const imageNames = ["buche_2", "co-pain_1", "dzume_4", "dzume_11", "gelification_4"];
+
+const slideImages = [];
+
+for (let imageName of imageNames) {
+    const path = new URL(`../assets/img/carousel/${imageName}.jpg`, import.meta.url).href;
+    slideImages.push({ src: path });
+}
+
 const state = reactive({
     transitioning: false,
-    slides: [
-        //TODO: make an easier way to modify the images (loading them from json file easily editable ?)
-        //TODO: make a random order for the photos
-        { id: 0, src: `${imagePath}/co-pain_1.jpg`, alt: "" },
-        { id: 1, src: `${imagePath}/dzume_11.jpg`, alt: "" },
-        { id: 2, src: `${imagePath}/co-pain_4.jpg`, alt: "" },
-        { id: 3, src: `${imagePath}/dzume_7.jpg`, alt: "" },
-        { id: 4, src: `${imagePath}/dzume_10.jpg`, alt: "" },
-        { id: 5, src: `${imagePath}/buche_2.jpg`, alt: "" },
-        { id: 6, src: `${imagePath}/dzume_4.jpg`, alt: "" },
-        { id: 7, src: `${imagePath}/gelification_4.jpg`, alt: "" },
-        { id: 8, src: `${imagePath}/gelification_6.jpg`, alt: "" },
-        { id: 9, src: `${imagePath}/gelification_8.jpg`, alt: "" },
-        { id: 10, src: `${imagePath}/maif_0.jpg`, alt: "" },
-        { id: 12, src: `${imagePath}/maif_7.jpg`, alt: "" },
-        { id: 13, src: `${imagePath}/st_brieuc_1.jpg`, alt: "" },
-        { id: 14, src: `${imagePath}/st_brieuc_5.jpg`, alt: "" },
-    ],
+    slides: slideImages,
+    //TODO: make an easier way to modify the images (loading them from json file easily editable ?)
+    //TODO: make a random order for the photos
+    //! Attention ! Importer les images une par une ! Je ne sais pas comment faire autrement...
     innerStyles: {},
     width: 0,
     height: 0,
@@ -42,6 +38,7 @@ onMounted(() => {
 
 onUnmounted(() => {
     window.removeEventListener("resize", updateDimensions);
+    console.log(theImages);
 });
 
 function updateDimensions() {
@@ -90,7 +87,7 @@ function resetTranslation() {
 <template>
     <div class="carousel">
         <div class="inner" :style="state.innerStyles">
-            <img v-for="slide in state.slides" class="slide" :src="slide.src" :alt="slide.alt" :key="slide.id" :style="{ width: `${state.width}px` }" />
+            <img v-for="(slide, index) in state.slides" class="slide" :src="slide.src" :key="index" :style="{ width: `${state.width}px` }" />
         </div>
         <button class="prev" @click="previous"><font-awesome-icon icon="fa-solid fa-chevron-left" /></button>
         <button class="next" @click="next"><font-awesome-icon icon="fa-solid fa-chevron-right" /></button>

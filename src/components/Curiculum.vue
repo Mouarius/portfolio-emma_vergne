@@ -50,6 +50,7 @@ import ContactCard from "./ContactCard.vue";
     h2 {
         font-family: "Inknut Antiqua", serif;
         font-size: 1.8rem;
+        cursor: default;
     }
 
     header {
