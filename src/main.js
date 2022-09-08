@@ -24,6 +24,7 @@ const routes = [
             {
                 path: ":project_id",
                 component: Projet,
+                props: true,
             },
         ],
     },

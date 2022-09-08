@@ -30,7 +30,7 @@ header {
 
     padding-left: 52px;
     padding-right: 52px;
-    padding-top: 1em;
+    padding-top: 1rem;
     box-sizing: border-box;
     height: 5rem;
 }

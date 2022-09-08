@@ -1,11 +1,33 @@
 <script setup>
+import { onMounted, reactive, ref, watch } from "vue";
+import { useRoute } from "vue-router";
+import Projet from "../Projet.vue";
+
 const coPain = new URL("../../assets/img/carousel/co-pain_1.jpg", import.meta.url);
 const dzume = new URL("../../assets/img/carousel/dzume_4.jpg", import.meta.url);
 const gelification = new URL("../../assets/img/carousel/gelification_8.jpg", import.meta.url);
 const maif = new URL("../../assets/img/carousel/maif_0.jpg", import.meta.url);
 const stBrieuc = new URL("../../assets/img/carousel/st_brieuc_5.jpg", import.meta.url);
 
-//Charger des images plus petites pour les miniatures, et déjà recadrées
+//TODO : Charger des images plus petites pour les miniatures, et déjà recadrées
+//TODO : Responsive
+
+const route = useRoute();
+const mozaicView = ref(true);
+
+onMounted(() => {
+    if (route.params.project_id) {
+        return (mozaicView.value = false);
+    }
+    route.value = true;
+});
+
+watch(route, (oldRoute, newRoute) => {
+    if (newRoute.params.project_id) {
+        return (mozaicView.value = false);
+    }
+    mozaicView.value = true;
+});
 
 const listeProjets = [
     { id: "offrande_epicurienne", name: "Offrande Epicurienne", img: coPain },
@@ -13,8 +35,9 @@ const listeProjets = [
     { id: "maif", name: "Maif Social Club", img: maif },
 ];
 </script>
+
 <template>
-    <ul class="mosaique">
+    <ul class="mosaique" v-if="mozaicView">
         <li v-for="projet in listeProjets" :key="projet.id" class="projet" :style="{ backgroundImage: `url(${projet.img.href})` }">
             <RouterLink :to="`/projets/${projet.id}`">
                 <div class="mask">
@@ -23,7 +46,7 @@ const listeProjets = [
             </RouterLink>
         </li>
     </ul>
-    <RouterView></RouterView>
+    <Projet v-else></Projet>
 </template>
 <style lang="scss" scoped>
 .mosaique {
@@ -53,7 +76,7 @@ const listeProjets = [
         right: 0;
         bottom: 0;
         background-color: rgba(255, 255, 255, 0.8);
-        transition: opacity 0.4s;
+        transition: opacity 0.6s;
         &:hover {
             opacity: 1;
         }
