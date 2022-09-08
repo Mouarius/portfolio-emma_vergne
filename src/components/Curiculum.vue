@@ -42,16 +42,6 @@ import ContactCard from "./ContactCard.vue";
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    h1 {
-        font-family: "Inknut Antiqua", serif;
-        font-size: 2.8rem;
-        margin-top: 48px;
-    }
-    h2 {
-        font-family: "Inknut Antiqua", serif;
-        font-size: 1.8rem;
-        cursor: default;
-    }
 
     header {
         text-align: center;

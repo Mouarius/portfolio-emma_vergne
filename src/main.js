@@ -4,6 +4,7 @@ import "./style.css";
 import App from "./App.vue";
 import Home from "./components/Pages/Home.vue";
 import Projets from "./components/Pages/Projets.vue";
+import Projet from "./components/Projet.vue";
 import Contact from "./components/Pages/Contact.vue";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -16,7 +17,16 @@ export const carouselImages = import.meta.glob("./assets/img/carousel/*.jpg"); /
 
 const routes = [
     { path: "/", component: Home },
-    { path: "/projets", component: Projets },
+    {
+        path: "/projets",
+        component: Projets,
+        children: [
+            {
+                path: ":project_id",
+                component: Projet,
+            },
+        ],
+    },
     { path: "/contact", component: Contact },
 ];
 
