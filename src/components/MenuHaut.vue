@@ -13,7 +13,7 @@
     </header>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 header {
     font-family: "Inknut Antiqua", serif;
     font-size: 2rem;
@@ -30,30 +30,30 @@ header {
 
     padding-left: 52px;
     padding-right: 52px;
-    padding-top: 1rem;
+    padding-top: 1.8rem;
     box-sizing: border-box;
     height: 5rem;
-}
-h1 {
-    font-weight: 600;
-    text-shadow: 2px 2px rgb(230, 230, 230);
-}
-.menu-droite {
-    display: flex;
-    align-items: center;
-    font-size: 1.2rem;
-    justify-content: space-between;
-}
-.link {
-    color: black;
-    cursor: pointer;
-    text-decoration: none;
-}
-li {
-    padding-left: 2rem;
-}
-.instagram {
-    color: black;
-    font-size: 1.6rem;
+    h1 {
+        font-weight: 600;
+        text-shadow: 2px 2px rgb(230, 230, 230);
+    }
+    .menu-droite {
+        display: flex;
+        align-items: center;
+        font-size: 1.2rem;
+        justify-content: space-between;
+    }
+    .link {
+        color: black;
+        cursor: pointer;
+        text-decoration: none;
+    }
+    li {
+        padding-left: 2rem;
+    }
+    .instagram {
+        color: black;
+        font-size: 1.6rem;
+    }
 }
 </style>

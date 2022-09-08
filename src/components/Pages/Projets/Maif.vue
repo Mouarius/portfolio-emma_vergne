@@ -1,6 +1,14 @@
+<script setup>
+const imgCover = new URL("/src/assets/img/carousel/maif_0.jpg", import.meta.url).href;
+</script>
+
 <template>
-    <div>
-        <h1>MAIF - Algues, processus de transformations</h1>
+    <article>
+        <header>
+            <img class="cover-image" :src="imgCover" alt="" />
+            <h1>Algues, processus de transformations</h1>
+            <h2>Exposition au Maif social club</h2>
+        </header>
         <p>
             Ce projet est une exploration sensible et plastique des étapes de transformation des algues dans l'industrie. Cette recherche est transcrite dans unecollection de papiers didactiques. Les
             papiers produits racontent les changements et transformations des algues avant leur consommation. Ils sensibilisent les consommateurs sur certaines étapes deleurs métamorphoses par un
@@ -28,5 +36,5 @@
             de transformation des algues rouges en industrie. En eﬀet, avant de devenir une poudre blanche, l'agar agar est une algue rouge. Pour être consommées, l'algue rouge devient verte et ﬁnit
             par se dépigmenter, avant de devenir blanche.
         </p>
-    </div>
+    </article>
 </template>

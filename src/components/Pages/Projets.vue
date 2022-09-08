@@ -13,20 +13,20 @@ const stBrieuc = new URL("../../assets/img/carousel/st_brieuc_5.jpg", import.met
 //TODO : Responsive
 
 const route = useRoute();
-const mozaicView = ref(true);
+const overlay = ref(false);
 
 onMounted(() => {
     if (route.params.project_id) {
-        return (mozaicView.value = false);
+        return (overlay.value = true);
     }
-    route.value = true;
+    overlay.value = false;
 });
 
 watch(route, (oldRoute, newRoute) => {
     if (newRoute.params.project_id) {
-        return (mozaicView.value = false);
+        return (overlay.value = true);
     }
-    mozaicView.value = true;
+    overlay.value = false;
 });
 
 const listeProjets = [
@@ -37,8 +37,8 @@ const listeProjets = [
 </script>
 
 <template>
-    <ul class="mosaique" v-if="mozaicView">
-        <li v-for="projet in listeProjets" :key="projet.id" class="projet" :style="{ backgroundImage: `url(${projet.img.href})` }">
+    <ul class="mosaique">
+        <li v-for="projet in listeProjets" :key="projet.id" class="tile" :style="{ backgroundImage: `url(${projet.img.href})` }">
             <RouterLink :to="`/projets/${projet.id}`">
                 <div class="mask">
                     <h2>{{ projet.name }}</h2>
@@ -46,9 +46,20 @@ const listeProjets = [
             </RouterLink>
         </li>
     </ul>
-    <Projet v-else></Projet>
+    <Transition>
+        <Projet v-if="overlay"></Projet>
+    </Transition>
 </template>
 <style lang="scss" scoped>
+.v-enter-active,
+.v-leave-active {
+    transition: opacity 0.6s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+    opacity: 0;
+}
 .mosaique {
     margin-top: 10rem;
     margin-left: 52px;
@@ -58,7 +69,7 @@ const listeProjets = [
     align-items: center;
     justify-content: center;
 }
-.projet {
+.tile {
     position: relative;
     margin: 1rem;
     background-clip: border-box;
