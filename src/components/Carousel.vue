@@ -38,7 +38,6 @@ onMounted(() => {
 
 onUnmounted(() => {
     window.removeEventListener("resize", updateDimensions);
-    console.log(theImages);
 });
 
 function updateDimensions() {

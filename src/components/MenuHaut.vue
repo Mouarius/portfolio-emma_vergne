@@ -19,6 +19,7 @@ header {
     font-size: 2rem;
 
     position: fixed;
+    display: block;
     z-index: 10;
     top: 0;
     left: 0;
@@ -30,6 +31,8 @@ header {
     padding-left: 52px;
     padding-right: 52px;
     padding-top: 1em;
+    box-sizing: border-box;
+    height: 5rem;
 }
 h1 {
     font-weight: 600;
