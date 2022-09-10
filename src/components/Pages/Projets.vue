@@ -33,6 +33,10 @@ const listeProjets = [
     { id: "offrande_epicurienne", name: "Offrande Epicurienne", img: coPain },
     { id: "dzume", name: "Dzûme", img: dzume },
     { id: "maif", name: "Maif Social Club", img: maif },
+    { id: "maif", name: "Maif Social Club", img: maif },
+    { id: "maif", name: "Maif Social Club", img: maif },
+    { id: "maif", name: "Maif Social Club", img: maif },
+    { id: "maif", name: "Maif Social Club", img: maif },
 ];
 </script>
 
@@ -64,19 +68,24 @@ const listeProjets = [
     margin-top: 10rem;
     margin-left: 52px;
     margin-right: 52px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 1fr;
+    gap: 1rem 1rem;
+
+    @media screen and (min-width: 768px) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem 1rem;
+    }
 }
 .tile {
     position: relative;
-    margin: 1rem;
     background-clip: border-box;
     background-size: cover;
-    width: 320px;
-    height: 320px;
-    .mask {
+    width: 100%;
+    aspect-ratio: 1;
+    a .mask {
         display: flex;
         justify-content: center;
         align-items: center;

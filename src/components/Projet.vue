@@ -12,13 +12,13 @@ const projectId = ref("");
 
 onMounted(() => {
     projectId.value = route.params.project_id;
-    // scrollTo(0, 0);
 });
 
 const goBack = () => {
     return router.back();
 };
 </script>
+
 <template>
     <div class="overlay">
         <OffrandeEpicurienne v-if="projectId === 'offrande_epicurienne'"></OffrandeEpicurienne>
@@ -26,6 +26,7 @@ const goBack = () => {
         <Dzume v-if="projectId === 'dzume'"></Dzume>
     </div>
 </template>
+
 <style lang="scss">
 .overlay {
     position: fixed;
