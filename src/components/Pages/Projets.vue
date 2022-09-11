@@ -73,10 +73,14 @@ const listeProjets = [
     height: 100%;
     grid-template-columns: 1fr;
     gap: 1rem 1rem;
+    @media screen and (min-width: 576px) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem 1rem;
+    }
 
     @media screen and (min-width: 768px) {
         grid-template-columns: repeat(3, 1fr);
-        gap: 1rem 1rem;
+        gap: 1.6rem 1.6rem;
     }
 }
 .tile {
