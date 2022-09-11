@@ -8,6 +8,7 @@ import image4 from "../../../assets/img/projets/maif_algues/resize/maif_algues4_
 import image5 from "../../../assets/img/projets/maif_algues/resize/maif_algues5_grande.jpg";
 import image6 from "../../../assets/img/projets/maif_algues/resize/maif_algues6_grande.jpg";
 import image7 from "../../../assets/img/projets/maif_algues/resize/maif_algues7_grande.jpg";
+import ImageCarousel from "../../ImageCarousel.vue";
 // const imgCover = new URL("../../../assets/img/projets/maif_algues/resize/maif_algues0_grande.jpg", import.meta.url).href;
 
 const router = useRouter();
@@ -76,14 +77,9 @@ const goDown = () => {
                     devient verte et finit par se dépigmenter, avant de devenir blanche.
                 </p>
             </div>
-            <div class="carousel span-all"></div>
+            <ImageCarousel :images-url="[image0, image1, image2]" :delay="8000" class="span-all" />
         </div>
     </article>
 </template>
 
-<style lang="scss" scoped>
-.carousel {
-    background-color: red;
-    height: 20rem;
-}
-</style>
+<style lang="scss" scoped></style>
