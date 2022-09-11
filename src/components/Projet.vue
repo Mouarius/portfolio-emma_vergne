@@ -103,6 +103,9 @@ article {
         grid-template-columns: 1fr;
         row-gap: 2rem;
 
+        .separator {
+            border-bottom: solid 1px black;
+        }
         section {
             grid-column: span 1;
             padding-bottom: 2rem;

@@ -109,7 +109,7 @@ function resetTranslation() {
     display: inline-flex;
     object-fit: contain;
     box-sizing: border-box;
-    max-height: 600px;
+    max-height: 300px;
 }
 button {
     position: absolute;
@@ -124,5 +124,10 @@ button {
 }
 .next {
     right: 24px;
+}
+@media screen and (min-width: 768px) {
+    .slide {
+        max-height: 600px;
+    }
 }
 </style>

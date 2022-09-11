@@ -50,6 +50,11 @@ header {
     }
     li {
         padding-left: 2rem;
+        transition: transform 0.2s ease;
+        transform-origin: center;
+        &:hover {
+            transform: rotate(-10deg);
+        }
     }
     .instagram {
         color: black;

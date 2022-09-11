@@ -77,6 +77,7 @@ const goDown = () => {
                     devient verte et finit par se dépigmenter, avant de devenir blanche.
                 </p>
             </div>
+            <h2>Gallerie</h2>
             <ImageCarousel :images-url="[image0, image1, image2]" :delay="8000" class="span-all" />
         </div>
     </article>
