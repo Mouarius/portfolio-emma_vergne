@@ -5,25 +5,27 @@ import OffrandeEpicurienne from "./Pages/Projets/OffrandeEpicurienne.vue";
 import Maif from "./Pages/Projets/Maif.vue";
 import Dzume from "./Pages/Projets/Dzume.vue";
 
-const router = useRouter();
-const route = useRoute();
+import coverMaif from "../assets/img/projets/maif_algues/resize/maif_algues0_grande.jpg";
+import ProjectHeader from "./ProjectHeader.vue";
+
+const props = defineProps(["project"]);
+
+const ComponentToRender = props.project.component;
 
 const projectId = ref("");
-
-onMounted(() => {
-    projectId.value = route.params.project_id;
-});
-
-const goBack = () => {
-    return router.back();
-};
 </script>
 
 <template>
     <div class="overlay">
-        <OffrandeEpicurienne v-if="projectId === 'offrande_epicurienne'"></OffrandeEpicurienne>
-        <Maif v-if="projectId === 'maif'"></Maif>
-        <Dzume v-if="projectId === 'dzume'"></Dzume>
+        <article>
+            <ProjectHeader :title="project.title" :subtitle="project.subtitle" :information="project.information.description" :coverImage="project.img" />
+            <div class="article-body">
+                <ComponentToRender></ComponentToRender>
+                <!-- <OffrandeEpicurienne v-if="projectId === 'offrande_epicurienne'"></OffrandeEpicurienne>
+                <Maif v-if="projectId === 'maif'"></Maif>
+                <Dzume v-if="projectId === 'dzume'"></Dzume> -->
+            </div>
+        </article>
     </div>
 </template>
 
