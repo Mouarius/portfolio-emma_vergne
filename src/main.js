@@ -9,7 +9,7 @@ import Contact from "./components/Pages/Contact.vue";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faChevronLeft, faChevronRight, faChevronDown, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faChevronLeft, faChevronRight, faChevronDown, faXmark, faBars } from "@fortawesome/free-solid-svg-icons";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { createWebHistory, createRouter } from "vue-router";
 
@@ -36,7 +36,7 @@ const router = createRouter({
     routes,
 });
 
-library.add(faXmark, faChevronLeft, faChevronRight, faChevronDown, faInstagram);
+library.add(faXmark, faChevronLeft, faChevronRight, faChevronDown, faInstagram, faBars);
 
 const app = createApp(App);
 app.use(router);

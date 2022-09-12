@@ -5,9 +5,11 @@ import Projet from "../Projet.vue";
 
 import coverMaif from "../../assets/img/projets/maif_algues/resize/maif_algues0_grande.jpg";
 import coverDzume from "../../assets/img/projets/dzume/resize/dzume4_grande.jpg";
+import coverOffrande from "../../assets/img/projets/offrande/resize/offrande0_grande.jpg";
 
 import MaifVue from "./Projets/Maif.vue";
 import DzumeVue from "./Projets/Dzume.vue";
+import OffrandeEpicurienneVue from "./Projets/OffrandeEpicurienne.vue";
 
 const coPain = new URL("../../assets/img/carousel/co-pain_1.jpg", import.meta.url);
 const dzume = new URL("../../assets/img/carousel/dzume_4.jpg", import.meta.url);
@@ -42,12 +44,24 @@ const projectList = [
         },
         component: MaifVue,
     },
+    {
+        id: "offrande_epicurienne",
+        name: "Offrande Epicurienne",
+        title: "Offrande Epicurienne : Co-pain",
+        subtitle: "Projet de diplôme ESAD de Reims",
+        img: coverOffrande,
+        information: {
+            date: "2022",
+            description: "Information rapide sur le projet",
+        },
+        component: OffrandeEpicurienneVue,
+    },
 ];
 
 const route = useRoute();
 const overlay = ref(false);
 const projectId = ref("");
-const projectToDisplay = reactive({});
+const projectToDisplay = {};
 
 const updateProjectToDisplay = (id) => {
     const project = projectList.find((p) => p.id === id);
