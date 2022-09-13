@@ -1,9 +1,9 @@
 <script setup>
-import MenuHaut from "./components/MenuHaut.vue";
+import AppHeader from "./components/AppHeader.vue";
 </script>
 
 <template>
-    <MenuHaut></MenuHaut>
+    <AppHeader />
     <RouterView></RouterView>
 </template>
 

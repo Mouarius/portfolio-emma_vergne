@@ -92,8 +92,8 @@ const toggleMenu = () => {
                 </ul>
             </transition>
             <ul v-if="!menuIsSmall" class="menu-large">
-                <li v-for="(link, index) in navLinks" :class="{ visible: link.visible }" :key="index" @click="toggleMenu" :data-index="index">
-                    <a v-if="link.name === 'instagram'" href="https://www.instagram.com/emmavergne/" @click="toggleMenu" class="instagram"><font-awesome-icon icon="fa-brands fa-instagram" /></a>
+                <li v-for="(link, index) in navLinks" :class="{ visible: link.visible }" :key="index" :data-index="index">
+                    <a v-if="link.name === 'instagram'" href="https://www.instagram.com/emmavergne/" class="instagram"><font-awesome-icon icon="fa-brands fa-instagram" /></a>
                     <router-link v-else :to="link.href" class="link">{{ link.name }}</router-link>
                 </li>
             </ul>

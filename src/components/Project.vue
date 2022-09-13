@@ -1,18 +1,14 @@
 <script setup>
-import { onMounted, ref } from "vue";
-import { useRoute, useRouter } from "vue-router";
-import OffrandeEpicurienne from "./Pages/Projets/OffrandeEpicurienne.vue";
-import Maif from "./Pages/Projets/Maif.vue";
-import Dzume from "./Pages/Projets/Dzume.vue";
+import { useRoute } from "vue-router";
 
-import coverMaif from "../assets/img/projets/maif_algues/resize/maif_algues0_grande.jpg";
 import ProjectHeader from "./ProjectHeader.vue";
 
-const props = defineProps(["project"]);
+const props = defineProps(["projectList"]);
 
-const ComponentToRender = props.project.component;
+const route = useRoute();
 
-const projectId = ref("");
+const project = props.projectList.find((p) => p.id === route.params.project_id);
+const ComponentToRender = project.component;
 </script>
 
 <template>
@@ -21,9 +17,6 @@ const projectId = ref("");
             <ProjectHeader :title="project.title" :subtitle="project.subtitle" :information="project.information.description" :coverImage="project.img" />
             <div class="article-body">
                 <ComponentToRender></ComponentToRender>
-                <!-- <OffrandeEpicurienne v-if="projectId === 'offrande_epicurienne'"></OffrandeEpicurienne>
-                <Maif v-if="projectId === 'maif'"></Maif>
-                <Dzume v-if="projectId === 'dzume'"></Dzume> -->
             </div>
         </article>
     </div>
