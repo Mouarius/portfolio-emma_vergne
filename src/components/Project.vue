@@ -1,4 +1,5 @@
 <script setup>
+import { onMounted, onUnmounted, ref, watch } from "vue";
 import { useRoute } from "vue-router";
 
 import ProjectHeader from "./ProjectHeader.vue";
@@ -9,10 +10,39 @@ const route = useRoute();
 
 const project = props.projectList.find((p) => p.id === route.params.project_id);
 const ComponentToRender = project.component;
+
+const overlayElement = ref();
+const scrollValue = ref(0);
+const goTopButton = ref(false);
+
+watch(scrollValue, () => {
+    if (scrollValue.value >= window.outerHeight / 2) {
+        return (goTopButton.value = true);
+    }
+    return (goTopButton.value = false);
+});
+
+const scrollTop = () => {
+    return overlayElement.value.scrollTo(0, 0);
+};
+
+const updateScroll = () => {
+    return (scrollValue.value = overlayElement.value.scrollTop);
+};
+
+onMounted(() => {
+    overlayElement.value = document.getElementById("project-overlay");
+    overlayElement.value.addEventListener("scroll", updateScroll);
+});
+
+onUnmounted(() => {
+    overlayElement.value.removeEventListener("scroll", updateScroll);
+});
 </script>
 
 <template>
-    <div class="overlay">
+    <div id="project-overlay" class="overlay">
+        <button @click="scrollTop" v-if="goTopButton" id="go-top"><font-awesome-icon icon="fa-solid fa-chevron-up" /></button>
         <article>
             <ProjectHeader :title="project.title" :subtitle="project.subtitle" :information="project.information.description" :coverImage="project.img" />
             <div class="article-body">
@@ -23,6 +53,18 @@ const ComponentToRender = project.component;
 </template>
 
 <style lang="scss">
+#go-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    height: 3rem;
+    width: 3rem;
+    font-size: 1.6rem;
+    background-color: rgb(11, 11, 11);
+    color: white;
+    border: none;
+    border-radius: 100%;
+}
 .overlay {
     position: fixed;
     top: 0;
@@ -30,6 +72,7 @@ const ComponentToRender = project.component;
     left: 0;
     right: 0;
     overflow: scroll;
+    scroll-behavior: smooth;
     z-index: 20;
     background-color: white;
     padding-bottom: 72px;

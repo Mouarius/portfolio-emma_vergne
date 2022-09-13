@@ -13,10 +13,6 @@ import OffrandeEpicurienneVue from "./Projets/OffrandeEpicurienne.vue";
 //TODO : Charger des images plus petites pour les miniatures, et déjà recadrées
 //TODO : Responsive
 
-const route = useRoute();
-const overlay = ref(false);
-const projectId = ref("");
-
 const projectList = [
     {
         id: "dzume",
@@ -55,32 +51,16 @@ const projectList = [
         component: OffrandeEpicurienneVue,
     },
 ];
-
-// onMounted(() => {
-//     if (route.params.project_id) {
-//         projectId.value = route.params.project_id;
-//         updateProjectToDisplay(projectId.value);
-//         return (overlay.value = true);
-//     }
-//     overlay.value = false;
-// });
-
-// watch(route, (oldRoute, newRoute) => {
-//     if (newRoute.params.project_id) {
-//         projectId.value = route.params.project_id;
-//         updateProjectToDisplay(projectId.value);
-//         return (overlay.value = true);
-//     }
-//     overlay.value = false;
-// });
 </script>
 
 <template>
     <ProjectList :project-list="projectList" />
-    <RouterView :project-list="projectList"></RouterView>
-    <!-- <Transition>
-        <Project v-if="overlay" :project="projectToDisplay"></Project>
-    </Transition> -->
+
+    <RouterView v-slot="{ Component }" :project-list="projectList">
+        <Transition>
+            <component :is="Component" />
+        </Transition>
+    </RouterView>
 </template>
 <style lang="scss" scoped>
 .v-enter-active,
