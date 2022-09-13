@@ -1,5 +1,5 @@
 <template>
-    <div class="card rot-left">
+    <div class="card">
         <h3>Emma · Vergne</h3>
         <div class="photo"></div>
         <address>
@@ -52,16 +52,23 @@
 
 .card {
     position: relative;
+    display: block;
+    box-sizing: content-box;
     border: solid 3px black;
     border-radius: 28px;
     min-width: 22rem;
     width: 22rem;
     height: 11rem;
 
+    transform: scale(0.7);
+
+    @media screen and (min-width: 576px) {
+        transform: scale(1);
+    }
+
     margin-top: 60px;
     margin-bottom: 60px;
     padding: 2rem 2.4rem;
-
     font-size: 1.2rem;
     font-weight: 600;
     .photo {
@@ -76,8 +83,6 @@
         top: 1.6rem;
     }
     a {
-        color: black;
-        text-decoration: none;
         background-color: white;
     }
     address {
