@@ -5,7 +5,7 @@ import bucheUrl from "../assets/img/buche/buche0-xlarge.jpg";
 import offrandeUrl from "../assets/img/offrande/offrande0-xlarge.jpg";
 import dzume1Url from "../assets/img/dzume/dzume4-xlarge.jpg";
 import dzume2Url from "../assets/img/dzume/dzume11-xlarge.jpg";
-import gelificationUrl from "../assets/img/gelification/gelification_4-xlarge.jpg";
+import gelificationUrl from "../assets/img/edition_gelification/edition_gelification4-xlarge.jpg";
 
 const delay = 10000;
 

@@ -16,6 +16,8 @@ li {
     background-clip: border-box;
     background-size: cover;
     width: 100%;
+    height: 100%;
+    max-width: 500px;
     aspect-ratio: 1;
     a .mask {
         display: flex;

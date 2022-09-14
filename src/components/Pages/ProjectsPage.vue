@@ -1,11 +1,9 @@
 <script setup>
-import { onMounted, ref, watch } from "vue";
-import { useRoute } from "vue-router";
 import ProjectList from "../ProjectList.vue";
 
-import coverMaif from "../../assets/img/projets/maif_algues/resize/maif_algues0_grande.jpg";
-import coverDzume from "../../assets/img/projets/dzume/resize/dzume4_grande.jpg";
-import coverOffrande from "../../assets/img/projets/offrande/resize/offrande0_grande.jpg";
+import coverMaif from "../../assets/img/maif_algues/maif_algues0-small.jpg";
+import coverDzume from "../../assets/img/dzume/dzume4-small.jpg";
+import coverOffrande from "../../assets/img/offrande/offrande4-small.jpg";
 import DzumeVue from "./Projets/Dzume.vue";
 import MaifVue from "./Projets/Maif.vue";
 import OffrandeEpicurienneVue from "./Projets/OffrandeEpicurienne.vue";
