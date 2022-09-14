@@ -1,16 +1,18 @@
 <script setup>
 import { onBeforeMount, onMounted, onUnmounted, reactive, ref } from "vue";
 
+import bucheUrl from "../assets/img/buche/buche0-xlarge.jpg";
+import offrandeUrl from "../assets/img/offrande/offrande0-xlarge.jpg";
+import dzume1Url from "../assets/img/dzume/dzume4-xlarge.jpg";
+import dzume2Url from "../assets/img/dzume/dzume11-xlarge.jpg";
+import gelificationUrl from "../assets/img/gelification/gelification_4-xlarge.jpg";
+
 const delay = 10000;
 
-const imageNames = ["buche_2", "co-pain_1", "dzume_4", "dzume_11", "gelification_4"];
-
-const slideImages = [];
-
-for (let imageName of imageNames) {
-    const path = new URL(`../assets/img/carousel/${imageName}.jpg`, import.meta.url).href;
-    slideImages.push({ src: path });
-}
+const images = [bucheUrl, offrandeUrl, dzume1Url, dzume2Url, gelificationUrl];
+const slideImages = images.map((img) => {
+    return { src: img };
+});
 
 const state = reactive({
     transitioning: false,
