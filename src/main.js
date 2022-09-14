@@ -11,9 +11,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { faChevronLeft, faChevronRight, faChevronDown, faChevronUp, faXmark, faBars } from "@fortawesome/free-solid-svg-icons";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
-import { createWebHistory, createRouter } from "vue-router";
-
-export const carouselImages = import.meta.glob("./assets/img/carousel/*.jpg"); /** */
+import { createWebHistory, createRouter, createWebHashHistory } from "vue-router";
 
 const routes = [
     { path: "/", component: HomePage },
@@ -31,7 +29,7 @@ const routes = [
 ];
 
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHashHistory(),
     routes,
 });
 
