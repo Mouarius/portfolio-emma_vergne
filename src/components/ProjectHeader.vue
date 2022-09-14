@@ -1,8 +1,10 @@
 <script setup>
 import { useRouter } from "vue-router";
 
-const props = defineProps(["coverImage", "title", "subtitle", "information"]);
+const props = defineProps(["projectId", "title", "subtitle", "information"]);
 const router = useRouter();
+
+const coverImageUrl = new URL(`../assets/img/${props.projectId}/${props.projectId}0-xlarge.jpg`, import.meta.url).href;
 
 const goBack = () => {
     return router.back();
@@ -15,7 +17,7 @@ const goDown = () => {
 <template>
     <header>
         <button class="back" @click="goBack"><font-awesome-icon icon="fa-standard fa-xmark" /></button>
-        <img class="cover-image" :src="coverImage" alt="" />
+        <img class="cover-image" :src="coverImageUrl" alt="" />
         <div class="project-info">
             <h1>{{ title }}</h1>
             <h4>{{ subtitle }}</h4>

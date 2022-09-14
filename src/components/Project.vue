@@ -1,12 +1,14 @@
 <script setup>
 import { onMounted, onUnmounted, ref, watch } from "vue";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 
 import ProjectHeader from "./ProjectHeader.vue";
+import ProjectFooter from "./ProjectFooter.vue";
 
 const props = defineProps(["projectList"]);
 
 const route = useRoute();
+const router = useRouter();
 
 const project = props.projectList.find((p) => p.id === route.params.project_id);
 const ComponentToRender = project.component;
@@ -30,6 +32,17 @@ const updateScroll = () => {
     return (scrollValue.value = overlayElement.value.scrollTop);
 };
 
+const toNextProject = () => {
+    const projectIndex = props.projectList.findIndex((proj) => proj.id === project.id);
+    const nextProject = projectIndex === props.projectList.length - 1 ? props.projectList[0] : props.projectList[projectIndex + 1];
+    router.push(`/projets/${nextProject.id}`);
+};
+const toPrevProject = () => {
+    const projectIndex = props.projectList.findIndex((proj) => proj.id === project.id);
+    const prevProject = projectIndex === 0 ? props.projectList[props.projectList.length - 1] : props.projectList[projectIndex - 1];
+    router.push(`/projets/${prevProject.id}`);
+};
+
 onMounted(() => {
     overlayElement.value = document.getElementById("project-overlay");
     overlayElement.value.addEventListener("scroll", updateScroll);
@@ -44,10 +57,11 @@ onUnmounted(() => {
     <div id="project-overlay" class="overlay">
         <button @click="scrollTop" v-if="goTopButton" id="go-top"><font-awesome-icon icon="fa-solid fa-chevron-up" /></button>
         <article>
-            <ProjectHeader :title="project.title" :subtitle="project.subtitle" :information="project.information.description" :coverImage="project.img" />
+            <ProjectHeader :title="project.title" :subtitle="project.subtitle" :information="project.information.description" :projectId="project.id" />
             <div class="article-body">
                 <ComponentToRender></ComponentToRender>
             </div>
+            <!-- <ProjectFooter :toNextProject="toNextProject" :toPrevProject="toPrevProject" /> -->
         </article>
     </div>
 </template>
@@ -75,8 +89,8 @@ onUnmounted(() => {
     scroll-behavior: smooth;
     z-index: 20;
     background-color: white;
-    padding-bottom: 72px;
     padding: 0 2rem;
+    padding-bottom: 8rem;
 
     display: flex;
     flex-direction: column;
@@ -92,9 +106,9 @@ button.back {
 }
 article {
     display: flex;
+    position: relative;
     flex-direction: column;
     align-items: center;
-
     width: 100%;
     max-width: 760px;
 
@@ -104,11 +118,11 @@ article {
 
     header {
         position: relative;
-        height: 100vh;
-        padding-top: 5vh;
-        padding-bottom: 15vh;
-        box-sizing: border-box;
         display: flex;
+        box-sizing: border-box;
+        padding-top: 2rem;
+        padding-bottom: 5rem;
+        height: 100vh;
         flex-direction: column;
         align-items: flex-start;
 
@@ -124,7 +138,7 @@ article {
             position: absolute;
             font-size: 1.8rem;
             text-align: center;
-            bottom: 8vh;
+            bottom: 4vh;
             width: 100%;
         }
         h1 {

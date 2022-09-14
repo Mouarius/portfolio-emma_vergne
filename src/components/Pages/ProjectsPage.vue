@@ -3,7 +3,7 @@ import ProjectList from "../ProjectList.vue";
 
 import coverMaif from "../../assets/img/maif_algues/maif_algues0-small.jpg";
 import coverDzume from "../../assets/img/dzume/dzume4-small.jpg";
-import coverOffrande from "../../assets/img/offrande/offrande4-small.jpg";
+import coverOffrande from "../../assets/img/offrande/offrande0-small.jpg";
 import DzumeVue from "./Projets/Dzume.vue";
 import MaifVue from "./Projets/Maif.vue";
 import OffrandeEpicurienneVue from "./Projets/OffrandeEpicurienne.vue";
@@ -25,7 +25,7 @@ const projectList = [
         component: DzumeVue,
     },
     {
-        id: "maif",
+        id: "maif_algues",
         name: "Maif Social Club",
         title: "Algues, processus de transformations",
         subtitle: "Exposition au Maif Social Club",
@@ -37,7 +37,7 @@ const projectList = [
         component: MaifVue,
     },
     {
-        id: "offrande_epicurienne",
+        id: "offrande",
         name: "Offrande Epicurienne",
         title: "Offrande Epicurienne : Co-pain",
         subtitle: "Projet de diplôme ESAD de Reims",
