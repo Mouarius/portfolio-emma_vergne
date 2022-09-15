@@ -24,6 +24,8 @@ li {
         justify-content: center;
         align-items: center;
         opacity: 0;
+        width: 100%;
+        height: 100%;
         position: absolute;
         background-color: rgba(255, 255, 255, 0.8);
         transition: opacity 0.6s;
