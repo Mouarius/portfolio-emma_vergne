@@ -4,7 +4,6 @@ import ProjectList from "../ProjectList.vue";
 
 <template>
     <ProjectList />
-    <RouterView></RouterView>
 </template>
 <style lang="scss" scoped>
 .v-enter-active,

@@ -14,13 +14,12 @@ ul.project-list {
     display: grid;
     margin: 0 1.4rem;
     margin-top: 10rem;
-    position: relative;
-    height: 100%;
+    margin-bottom: 5rem;
+
     grid-template-columns: 100%;
-    grid-auto-columns: auto;
+    grid-column: span 1;
+    grid-row: span 1;
     overflow: hidden;
-    grid-auto-flow: row;
-    // grid-template-rows: auto;
     gap: 1rem 1rem;
     @media screen and (min-width: 576px) {
         grid-template-columns: repeat(2, minmax(200px, auto));

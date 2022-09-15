@@ -126,12 +126,12 @@ button {
     top: 50%;
     background: none;
     border: none;
-    font-size: 24px;
+    font-size: 1.8rem;
 }
 .prev {
-    left: 24px;
+    left: 1rem;
 }
 .next {
-    right: 24px;
+    right: 1rem;
 }
 </style>

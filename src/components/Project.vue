@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted, onUnmounted, reactive, ref, shallowRef, watch, watchEffect } from "vue";
-import { onBeforeRouteUpdate, useRoute, useRouter } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { projectList } from "../data/projects";
 
 import ProjectHeader from "./ProjectHeader.vue";
@@ -9,10 +9,11 @@ import ProjectFooter from "./ProjectFooter.vue";
 const route = useRoute();
 const router = useRouter();
 
+const initialScroll = ref(0);
+
 const project = shallowRef(projectList.find((p) => p.id === route.params.project_id));
 const ComponentToRender = shallowRef(project.value.component);
 
-const overlayElement = ref();
 const scrollValue = ref(0);
 const goTopButton = ref(false);
 
@@ -21,11 +22,11 @@ function findProject(projectId) {
 }
 
 const scrollTop = () => {
-    return overlayElement.value.scrollTo(0, 0);
+    return window.scroll(0, 0);
 };
 
 const updateScroll = () => {
-    return (scrollValue.value = overlayElement.value.scrollTop);
+    return (scrollValue.value = window.scrollY);
 };
 
 const updateProject = (projectId) => {
@@ -65,13 +66,15 @@ watch(scrollValue, () => {
 
 onMounted(() => {
     project.value = projectList.find((p) => p.id === route.params.project_id);
-
-    overlayElement.value = document.getElementById("project-overlay");
-    overlayElement.value.addEventListener("scroll", updateScroll);
+    initialScroll.value = window.scrollY;
+    scrollTop();
+    // overlayElement.value = document.getElementById("project-overlay");
+    document.addEventListener("scroll", updateScroll);
 });
 
 onUnmounted(() => {
-    overlayElement.value.removeEventListener("scroll", updateScroll);
+    window.scrollTo(0, initialScroll.value);
+    document.removeEventListener("scroll", updateScroll);
 });
 </script>
 
@@ -90,12 +93,15 @@ onUnmounted(() => {
 
 <style lang="scss">
 #go-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: fixed;
-    z-index: 10;
+    z-index: 20;
     bottom: 2rem;
     right: 2rem;
-    height: 3rem;
-    width: 3rem;
+    height: 48px;
+    width: 48px;
     font-size: 1.6rem;
     background-color: rgb(11, 11, 11);
     color: white;
@@ -103,13 +109,11 @@ onUnmounted(() => {
     border-radius: 100%;
 }
 .overlay {
-    position: fixed;
+    position: absolute;
     top: 0;
-    bottom: 0;
     left: 0;
     right: 0;
-    overflow: scroll;
-    scroll-behavior: smooth;
+    overflow: hidden;
     z-index: 10;
     background-color: white;
     padding: 0 1.2rem;
@@ -121,18 +125,25 @@ onUnmounted(() => {
 }
 
 button.back {
-    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    height: 32px;
+    width: 32px;
+    box-sizing: border-box;
     border: none;
     background: none;
     cursor: pointer;
     margin-bottom: 1rem;
+    position: relative;
 }
 article {
     display: flex;
-    position: relative;
     flex-direction: column;
     align-items: center;
     width: 100%;
+    height: 100%;
     max-width: 760px;
 
     p {
@@ -151,13 +162,11 @@ article {
     }
 
     header {
-        position: relative;
         display: flex;
         box-sizing: border-box;
         padding-top: 2rem;
         padding-bottom: 5rem;
         height: 100vh;
-        width: 100%;
         flex-direction: column;
         align-items: flex-start;
 
@@ -188,6 +197,7 @@ article {
         padding-top: 4rem;
         display: grid;
         grid-template-columns: 1fr;
+        grid-template-rows: auto;
         row-gap: 2rem;
 
         .separator {

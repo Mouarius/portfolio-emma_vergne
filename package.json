@@ -4,10 +4,10 @@
     "version": "0.0.0",
     "type": "module",
     "scripts": {
-        "dev": "vite",
+        "dev": "vite --host 192.168.1.101",
         "build": "vite build",
         "preview": "vite preview",
-        "deploy": "vite build ; cp -r ./dist/ ../portfolio-emma_vergne-production"
+        "deploy": "vite build ; cp -r ./dist/ ../portfolio-emma_vergne-production ; cd ../portfolio-emma_vergne-production ; git add . ; git commit -m 'Deploy' ; git push"
     },
     "dependencies": {
         "@fortawesome/fontawesome-svg-core": "^6.2.0",

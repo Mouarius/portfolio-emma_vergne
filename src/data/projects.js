@@ -1,12 +1,14 @@
 import coverMaif from "../assets/img/maif_algues/maif_algues0-small.jpg";
 import coverDzume from "../assets/img/dzume/dzume4-small.jpg";
 import coverOffrande from "../assets/img/offrande/offrande0-small.jpg";
-import coverEstran from "../assets/img/carte_estran/carte_estran0-small.jpg";
+import coverEstran from "../assets/img/carte_estran/carte_estran1-small.jpg";
 import coverBuche from "../assets/img/buche/buche0-small.jpg";
-import coverGelification from "../assets/img/edition_gelification/edition_gelification0-small.jpg";
+import coverGelification from "../assets/img/edition_gelification/edition_gelification6-small.jpg";
 import DzumeVue from "../components/Pages/Projets/Dzume.vue";
 import MaifVue from "../components/Pages/Projets/Maif.vue";
 import OffrandeEpicurienneVue from "../components/Pages/Projets/OffrandeEpicurienne.vue";
+
+import WorkInProgressVue from "../components/Pages/Projets/WorkInProgress.vue";
 
 export const projectList = [
     {
@@ -31,7 +33,7 @@ export const projectList = [
             date: "2021",
             description: "Projet de graphisme",
         },
-        component: OffrandeEpicurienneVue,
+        component: WorkInProgressVue,
     },
     {
         id: "maif_algues",
@@ -68,7 +70,7 @@ export const projectList = [
             date: "2020",
             description: "A compléter",
         },
-        component: OffrandeEpicurienneVue,
+        component: WorkInProgressVue,
     },
     {
         id: "edition_gelification",
@@ -80,6 +82,6 @@ export const projectList = [
             date: "2020",
             description: "A compléter",
         },
-        component: OffrandeEpicurienneVue,
+        component: WorkInProgressVue,
     },
 ];
