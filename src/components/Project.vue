@@ -57,7 +57,7 @@ onUnmounted(() => {
     <div id="project-overlay" class="overlay">
         <button @click="scrollTop" v-if="goTopButton" id="go-top"><font-awesome-icon icon="fa-solid fa-chevron-up" /></button>
         <article>
-            <ProjectHeader :title="project.title" :subtitle="project.subtitle" :information="project.information.description" :projectId="project.id" />
+            <ProjectHeader :title="project.title" :subtitle="project.subtitle" :information="project.information.description" :date="project.information.date" :projectId="project.id" />
             <div class="article-body">
                 <ComponentToRender></ComponentToRender>
             </div>
@@ -69,6 +69,7 @@ onUnmounted(() => {
 <style lang="scss">
 #go-top {
     position: fixed;
+    z-index: 10;
     bottom: 2rem;
     right: 2rem;
     height: 3rem;
@@ -87,9 +88,9 @@ onUnmounted(() => {
     right: 0;
     overflow: scroll;
     scroll-behavior: smooth;
-    z-index: 20;
+    z-index: 10;
     background-color: white;
-    padding: 0 2rem;
+    padding: 0 1.2rem;
     padding-bottom: 8rem;
 
     display: flex;
@@ -112,6 +113,17 @@ article {
     width: 100%;
     max-width: 760px;
 
+    p {
+        margin-bottom: 1rem;
+        line-height: 1.5rem;
+    }
+    em {
+        font-weight: 700;
+    }
+    i {
+        font-style: italic;
+    }
+
     img:not(.cover-image) {
         width: 100%;
     }
@@ -123,6 +135,7 @@ article {
         padding-top: 2rem;
         padding-bottom: 5rem;
         height: 100vh;
+        width: 100%;
         flex-direction: column;
         align-items: flex-start;
 

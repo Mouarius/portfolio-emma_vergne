@@ -1,7 +1,7 @@
 <script setup>
 import { useRouter } from "vue-router";
 
-const props = defineProps(["projectId", "title", "subtitle", "information"]);
+const props = defineProps(["projectId", "title", "subtitle", "information", "date"]);
 const router = useRouter();
 
 const coverImageUrl = new URL(`../assets/img/${props.projectId}/${props.projectId}0-xlarge.jpg`, import.meta.url).href;
@@ -21,7 +21,7 @@ const goDown = () => {
         <div class="project-info">
             <h1>{{ title }}</h1>
             <h4>{{ subtitle }}</h4>
-            <div class="information">{{ information }}</div>
+            <div class="information">{{ date }} • {{ information }}</div>
         </div>
         <button class="down" @click="goDown">
             <font-awesome-icon icon="fa-solid fa-chevron-down" />

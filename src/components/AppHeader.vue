@@ -119,8 +119,9 @@ const toggleMenu = () => {
     position: fixed;
     display: block;
     z-index: 10;
-    width: 100%;
-    padding: 0 2rem;
+    left: 0;
+    right: 0;
+    padding: 0 1rem;
     top: 0;
     display: flex;
     align-items: baseline;
@@ -129,6 +130,10 @@ const toggleMenu = () => {
     padding-top: 1.8rem;
     box-sizing: border-box;
 
+    @media screen and (min-width: 576px) {
+        padding: 0 2rem;
+        padding-top: 1.8rem;
+    }
     #page-title {
         font-weight: 600;
         text-shadow: 2px 2px rgb(230, 230, 230);

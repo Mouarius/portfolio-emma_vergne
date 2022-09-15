@@ -11,23 +11,24 @@ const props = defineProps(["projectList"]);
 </template>
 
 <style lang="scss" scoped>
-.project-list {
-    margin-top: 10rem;
-    margin-left: 52px;
-    margin-right: 52px;
+ul.project-list {
     display: grid;
-    width: 100%;
+    margin: 0 1.4rem;
+    margin-top: 10rem;
+    position: relative;
     height: 100%;
-    grid-template-columns: 1fr;
+    grid-template-columns: 100%;
+    grid-auto-columns: auto;
+    overflow: hidden;
+    grid-auto-flow: row;
+    // grid-template-rows: auto;
     gap: 1rem 1rem;
     @media screen and (min-width: 576px) {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem 1rem;
+        grid-template-columns: repeat(2, minmax(200px, auto));
     }
 
     @media screen and (min-width: 768px) {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.6rem 1.6rem;
+        grid-template-columns: repeat(3, minmax(200px, auto));
     }
 }
 </style>

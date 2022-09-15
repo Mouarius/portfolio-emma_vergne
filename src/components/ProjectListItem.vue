@@ -15,20 +15,16 @@ li {
     position: relative;
     background-clip: border-box;
     background-size: cover;
+    // max-width: 500px;
     width: 100%;
     height: 100%;
-    max-width: 500px;
-    aspect-ratio: 1;
-    a .mask {
+    aspect-ratio: 1 / 1;
+    .mask {
         display: flex;
         justify-content: center;
         align-items: center;
         opacity: 0;
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
         background-color: rgba(255, 255, 255, 0.8);
         transition: opacity 0.6s;
         &:hover {
@@ -41,6 +37,7 @@ li {
     }
     img {
         transition: all 0.8s ease-in-out;
+        max-width: 100%;
     }
 }
 </style>
