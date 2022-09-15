@@ -98,6 +98,7 @@ function resetTranslation() {
 <style scoped>
 .carousel {
     overflow: hidden;
+    position: relative;
     top: 0;
     left: 0;
     right: 0;
