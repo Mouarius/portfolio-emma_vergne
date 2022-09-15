@@ -1,18 +1,40 @@
 <script setup>
-import { useRouter } from "vue-router";
+import { onMounted, ref, watch } from "vue";
+import { useRoute, useRouter } from "vue-router";
 
-const props = defineProps(["projectId", "title", "subtitle", "information", "date"]);
+const props = defineProps(["title", "subtitle", "information", "date"]);
 const router = useRouter();
+const route = useRoute();
 
-const coverImageUrl = new URL(`../assets/img/${props.projectId}/${props.projectId}0-xlarge.jpg`, import.meta.url).href;
+const fetchImage = (projectId) => {
+    return new URL(`../assets/img/${projectId}/${projectId}0-xlarge.jpg`, import.meta.url).href;
+};
+
+const coverImageUrl = ref(fetchImage(props.projectId));
+
+const updateCoverImage = (projectId) => {
+    return (coverImageUrl.value = fetchImage(route.params.project_id));
+};
+
+watch(
+    () => route.params,
+    () => {
+        if (!route.params.project_id) return;
+        updateCoverImage(route.params.project_id);
+    }
+);
 
 const goBack = () => {
-    return router.back();
+    return router.push("/projets/");
 };
 
 const goDown = () => {
     document.querySelector(".article-body").scrollIntoView({ behavior: "smooth" });
 };
+
+onMounted(() => {
+    updateCoverImage(route.params.project_id);
+});
 </script>
 <template>
     <header>

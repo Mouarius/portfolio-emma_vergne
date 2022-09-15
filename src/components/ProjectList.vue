@@ -1,7 +1,6 @@
 <script setup>
 import ProjectListItem from "./ProjectListItem.vue";
-
-const props = defineProps(["projectList"]);
+import { projectList } from "../data/projects";
 </script>
 
 <template>

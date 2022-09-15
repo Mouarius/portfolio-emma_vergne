@@ -11,7 +11,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { faChevronLeft, faChevronRight, faChevronDown, faChevronUp, faXmark, faBars } from "@fortawesome/free-solid-svg-icons";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
-import { createWebHistory, createRouter, createWebHashHistory } from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router";
 
 const routes = [
     { path: "/", component: HomePage },

@@ -1,28 +1,24 @@
 <script setup>
-import { onMounted, onUnmounted, ref, watch } from "vue";
-import { useRoute, useRouter } from "vue-router";
+import { onMounted, onUnmounted, reactive, ref, shallowRef, watch, watchEffect } from "vue";
+import { onBeforeRouteUpdate, useRoute, useRouter } from "vue-router";
+import { projectList } from "../data/projects";
 
 import ProjectHeader from "./ProjectHeader.vue";
 import ProjectFooter from "./ProjectFooter.vue";
 
-const props = defineProps(["projectList"]);
-
 const route = useRoute();
 const router = useRouter();
 
-const project = props.projectList.find((p) => p.id === route.params.project_id);
-const ComponentToRender = project.component;
+const project = shallowRef(projectList.find((p) => p.id === route.params.project_id));
+const ComponentToRender = shallowRef(project.value.component);
 
 const overlayElement = ref();
 const scrollValue = ref(0);
 const goTopButton = ref(false);
 
-watch(scrollValue, () => {
-    if (scrollValue.value >= window.outerHeight / 2) {
-        return (goTopButton.value = true);
-    }
-    return (goTopButton.value = false);
-});
+function findProject(projectId) {
+    return projectList.find((p) => p.id === projectId);
+}
 
 const scrollTop = () => {
     return overlayElement.value.scrollTo(0, 0);
@@ -32,18 +28,44 @@ const updateScroll = () => {
     return (scrollValue.value = overlayElement.value.scrollTop);
 };
 
-const toNextProject = () => {
-    const projectIndex = props.projectList.findIndex((proj) => proj.id === project.id);
-    const nextProject = projectIndex === props.projectList.length - 1 ? props.projectList[0] : props.projectList[projectIndex + 1];
-    router.push(`/projets/${nextProject.id}`);
-};
-const toPrevProject = () => {
-    const projectIndex = props.projectList.findIndex((proj) => proj.id === project.id);
-    const prevProject = projectIndex === 0 ? props.projectList[props.projectList.length - 1] : props.projectList[projectIndex - 1];
-    router.push(`/projets/${prevProject.id}`);
+const updateProject = (projectId) => {
+    project.value = findProject(projectId);
+    ComponentToRender.value = project.value.component;
 };
 
+//TODO: Smooth transition to next/prev projects
+
+const toNextProject = () => {
+    const projectIndex = projectList.findIndex((proj) => proj.id === project.value.id);
+    const nextProject = projectIndex === projectList.length - 1 ? projectList[0] : projectList[projectIndex + 1];
+    router.push(`/projets/${nextProject.id}`);
+    scrollTop();
+};
+const toPrevProject = () => {
+    const projectIndex = projectList.findIndex((proj) => proj.id === project.value.id);
+    const prevProject = projectIndex === 0 ? projectList[projectList.length - 1] : projectList[projectIndex - 1];
+    router.push(`/projets/${prevProject.id}`);
+    scrollTop();
+};
+
+watch(
+    () => route.params,
+    () => {
+        if (!route.params.project_id) return;
+        updateProject(route.params.project_id);
+    }
+);
+
+watch(scrollValue, () => {
+    if (scrollValue.value >= window.outerHeight / 2) {
+        return (goTopButton.value = true);
+    }
+    return (goTopButton.value = false);
+});
+
 onMounted(() => {
+    project.value = projectList.find((p) => p.id === route.params.project_id);
+
     overlayElement.value = document.getElementById("project-overlay");
     overlayElement.value.addEventListener("scroll", updateScroll);
 });
@@ -61,7 +83,7 @@ onUnmounted(() => {
             <div class="article-body">
                 <ComponentToRender></ComponentToRender>
             </div>
-            <!-- <ProjectFooter :toNextProject="toNextProject" :toPrevProject="toPrevProject" /> -->
+            <ProjectFooter :toNextProject="toNextProject" :toPrevProject="toPrevProject" />
         </article>
     </div>
 </template>
