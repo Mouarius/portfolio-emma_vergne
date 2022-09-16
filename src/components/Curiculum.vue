@@ -20,16 +20,18 @@ onMounted(() => {
             <li class="prompt-line">Bonjour,</li>
             <li class="prompt-line">
                 je m'appelle
-                <div class="field"><span class="fill-in rot-right">Emma Vergne</span></div>
+                <div class="field"><em class="fill-in rot-right">Emma Vergne</em></div>
             </li>
             <li class="prompt-line">
                 et je suis
-                <div class="field"><span class="fill-in rot-left">Designeuse Culinaire</span></div>
+                <div class="field"><em class="fill-in rot-left">Designeuse Culinaire</em></div>
             </li>
             <li class="prompt-line">
                 diplômée de
                 <div class="field">
-                    <a href="https://designculinaire.esaddereims.fr/" about="Site internet du Master Design Culinaire" class="fill-in rot-right"> ESAD de Reims </a>
+                    <a href="https://designculinaire.esaddereims.fr/" about="Site internet du Master Design Culinaire" class="fill-in rot-right">
+                        <em> ESAD de Reims </em>
+                    </a>
                 </div>
                 .
             </li>
