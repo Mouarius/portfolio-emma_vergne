@@ -90,8 +90,8 @@ function resetTranslation() {
         <div class="inner" :style="state.innerStyles">
             <img v-for="(slide, index) in state.slides" class="slide" :src="slide.src" :key="index" :style="{ width: `${state.width}px` }" />
         </div>
-        <button class="prev" @click="previous"><font-awesome-icon icon="fa-solid fa-chevron-left" /></button>
-        <button class="next" @click="next"><font-awesome-icon icon="fa-solid fa-chevron-right" /></button>
+        <button class="prev" @click="previous"><font-awesome-icon icon="fa-solid fa-chevron-left" fixed-width size="xl" /></button>
+        <button class="next" @click="next"><font-awesome-icon icon="fa-solid fa-chevron-right" fixed-width size="xl" /></button>
     </div>
 </template>
 
@@ -126,7 +126,6 @@ button {
     top: 50%;
     background: none;
     border: none;
-    font-size: 1.8rem;
 }
 .prev {
     left: 1rem;

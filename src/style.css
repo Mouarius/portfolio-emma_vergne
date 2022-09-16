@@ -5,7 +5,7 @@ html::-webkit-scrollbar {
 /* Hide scrollbar for IE, Edge and Firefox */
 html {
     font-family: "Public Sans", serif;
-    font-size: 14px;
+    font-size: 16px;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -13,12 +13,6 @@ html {
     -webkit-text-size-adjust: 100%;
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
-}
-
-@media screen and (min-width: 576px) {
-    html {
-        font-size: 16px;
-    }
 }
 
 #app {

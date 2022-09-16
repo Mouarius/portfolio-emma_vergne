@@ -80,7 +80,7 @@ onUnmounted(() => {
 
 <template>
     <div id="project-overlay" class="overlay">
-        <button @click="scrollTop" v-if="goTopButton" id="go-top"><font-awesome-icon icon="fa-solid fa-chevron-up" /></button>
+        <button @click="scrollTop" v-if="goTopButton" id="go-top"><font-awesome-icon icon="fa-solid fa-chevron-up" fixed-width size="xl" /></button>
         <article>
             <ProjectHeader :title="project.title" :subtitle="project.subtitle" :information="project.information.description" :date="project.information.date" :projectId="project.id" />
             <div class="article-body">
@@ -102,7 +102,6 @@ onUnmounted(() => {
     right: 2rem;
     height: 48px;
     width: 48px;
-    font-size: 1.6rem;
     background-color: rgb(11, 11, 11);
     color: white;
     border: none;
@@ -180,7 +179,6 @@ article {
             background: none;
             border: none;
             position: absolute;
-            font-size: 1.8rem;
             text-align: center;
             bottom: 4vh;
             width: 100%;

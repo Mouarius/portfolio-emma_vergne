@@ -38,7 +38,7 @@ onMounted(() => {
 </script>
 <template>
     <header>
-        <button class="back" @click="goBack"><font-awesome-icon icon="fa-standard fa-xmark" /></button>
+        <button class="back" @click="goBack"><font-awesome-icon icon="fa-standard fa-xmark" fixed-width size="none" /></button>
         <img class="cover-image" :src="coverImageUrl" alt="" />
         <div class="project-info">
             <h1>{{ title }}</h1>
@@ -46,7 +46,7 @@ onMounted(() => {
             <div class="information">{{ date }} • {{ information }}</div>
         </div>
         <button class="down" @click="goDown">
-            <font-awesome-icon icon="fa-solid fa-chevron-down" />
+            <font-awesome-icon icon="fa-solid fa-chevron-down" fixed-width size="lg" />
         </button>
     </header>
 </template>
