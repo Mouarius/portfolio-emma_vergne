@@ -151,6 +151,9 @@ article {
         line-height: 1.5rem;
     }
     em {
+        font-style: italic;
+    }
+    strong {
         font-weight: 700;
     }
     i {
