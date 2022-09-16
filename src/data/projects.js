@@ -7,6 +7,7 @@ import coverGelification from "../assets/img/edition_gelification/edition_gelifi
 import DzumeVue from "../components/Pages/Projets/Dzume.vue";
 import MaifVue from "../components/Pages/Projets/Maif.vue";
 import OffrandeEpicurienneVue from "../components/Pages/Projets/OffrandeEpicurienne.vue";
+import CarteEstranVue from "../components/Pages/Projets/CarteEstran.vue";
 
 import WorkInProgressVue from "../components/Pages/Projets/WorkInProgress.vue";
 
@@ -26,14 +27,14 @@ export const projectList = [
     {
         id: "carte_estran",
         name: "Carte de l'estran",
-        title: "Edition : Carte de l'estran",
-        subtitle: "Cartographie et recettes culinaires sur les plantes de l'estran",
+        title: "Carte de l'estran",
+        subtitle: "Comment cueillir et déguster nos algues et plantes maritimes ?",
         img: coverEstran,
         information: {
-            date: "2021",
-            description: "Projet de graphisme",
+            date: "2020",
+            description: "Workshop à Saint-Brieuc - Cartographie de cueillette et recettes culinaires sur les plantes de l'estran.",
         },
-        component: WorkInProgressVue,
+        component: CarteEstranVue,
     },
     {
         id: "maif_algues",

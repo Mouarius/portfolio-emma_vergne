@@ -45,8 +45,8 @@ onMounted(() => {
             <h4>{{ subtitle }}</h4>
             <div class="information">{{ date }} • {{ information }}</div>
         </div>
-        <button class="down" @click="goDown">
+        <!-- <button class="down" @click="goDown">
             <font-awesome-icon icon="fa-solid fa-chevron-down" fixed-width size="lg" />
-        </button>
+        </button> -->
     </header>
 </template>

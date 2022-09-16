@@ -15,11 +15,12 @@ const props = defineProps(["toPrevProject", "toNextProject"]);
     width: 100%;
     justify-content: space-between;
     button {
-        font-family: "Public Sans", sans-serif;
-        font-size: 1rem;
+        font-family: "Inknut Antiqua", sans-serif;
+        font-size: 1em;
         font-weight: 600;
         border: none;
         background: none;
+        transform: none;
         &:hover {
             text-decoration: underline;
         }
