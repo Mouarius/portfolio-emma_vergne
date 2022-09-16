@@ -84,7 +84,10 @@ onMounted(() => {
 
             a {
                 color: rgb(150, 148, 255);
-                text-shadow: -4px 4px rgb(23, 23, 31);
+                text-shadow: -2px 2px rgb(23, 23, 31);
+                &:hover {
+                    text-decoration: underline;
+                }
             }
 
             .field {
@@ -98,7 +101,7 @@ onMounted(() => {
             .fill-in {
                 display: inline-block;
                 color: rgb(252, 170, 18);
-                text-shadow: -4px 4px rgb(27, 18, 2);
+                text-shadow: -2px 2px rgb(27, 18, 2);
                 // transform-origin: right;
 
                 // transition: transform 0.1s ease;
@@ -130,6 +133,12 @@ onMounted(() => {
             .field {
                 bottom: 0.6rem;
                 border-bottom: dotted 5px black !important;
+            }
+            .prompt-line .fill-in {
+                text-shadow: -3px 3px rgb(27, 18, 2);
+            }
+            .prompt-line a {
+                text-shadow: -3px 3px rgb(23, 23, 31);
             }
         }
     }

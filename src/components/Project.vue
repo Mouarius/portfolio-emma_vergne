@@ -138,6 +138,7 @@ button.back {
     position: relative;
 }
 article {
+    padding: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -168,6 +169,7 @@ article {
         height: 100vh;
         flex-direction: column;
         align-items: flex-start;
+        width: 100%;
 
         .cover-image {
             object-fit: cover;
@@ -197,6 +199,7 @@ article {
         grid-template-columns: 1fr;
         grid-template-rows: auto;
         row-gap: 2rem;
+        width: 100%;
 
         .separator {
             border-bottom: solid 1px black;
