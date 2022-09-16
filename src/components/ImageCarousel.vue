@@ -17,7 +17,16 @@ const state = reactive({
     width: 0,
     height: 0,
     step: window.innerWidth,
+    displayedImage: null,
 });
+
+function hideImage() {
+    return (state.displayedImage = null);
+}
+
+function displayImage(image) {
+    return (state.displayedImage = image);
+}
 
 onBeforeMount(() => {
     window.addEventListener("resize", updateDimensions);
@@ -81,14 +90,34 @@ function resetTranslation() {
 <template>
     <div class="carousel" ref="carouselRef">
         <div class="inner" :style="state.innerStyles">
-            <img v-for="(slide, index) in state.slides" class="slide" :src="slide" :key="index" :style="{ width: `${state.width}px` }" />
+            <img v-for="(slide, index) in state.slides" class="slide" :src="slide" @click="displayImage(slide)" :key="index" :style="{ width: `${state.width}px` }" />
         </div>
         <button class="prev" @click="previous"><font-awesome-icon icon="fa-solid fa-chevron-left" /></button>
         <button class="next" @click="next"><font-awesome-icon icon="fa-solid fa-chevron-right" /></button>
+        <div @click="hideImage" v-if="state.displayedImage" class="big-image">
+            <img :src="state.displayedImage" alt="" />
+        </div>
     </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+.big-image {
+    position: fixed;
+    display: flex;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.205);
+    img {
+        position: relative;
+        object-fit: scale-down;
+        max-width: 90%;
+        max-height: 90%;
+    }
+}
 .carousel {
     position: relative;
     overflow: hidden;
@@ -110,6 +139,11 @@ function resetTranslation() {
     object-fit: contain;
     box-sizing: border-box;
     max-height: 300px;
+    transition: filter 0.2s;
+    &:hover {
+        cursor: pointer;
+        filter: brightness(90%);
+    }
 }
 button {
     position: absolute;
