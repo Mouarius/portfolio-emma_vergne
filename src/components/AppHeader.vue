@@ -114,8 +114,6 @@ const toggleMenu = () => {
 
 <style lang="scss" scoped>
 #page-header {
-    font-family: "Inknut Antiqua", serif;
-
     position: fixed;
     display: block;
     z-index: 10;
@@ -156,6 +154,8 @@ const toggleMenu = () => {
         }
     }
     nav {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 500;
         ul {
             display: flex;
             align-items: center;

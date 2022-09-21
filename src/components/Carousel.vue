@@ -11,7 +11,7 @@ const delay = 10000;
 
 const images = [bucheUrl, offrandeUrl, dzume1Url, dzume2Url, gelificationUrl];
 const slideImages = images.map((img) => {
-    return { src: img };
+    return { src: img, href: img.match(/(\w+)-/)[1].slice(0, -1) };
 });
 
 const state = reactive({
@@ -127,6 +127,7 @@ button {
     background: none;
     border: none;
 }
+
 .prev {
     left: 1rem;
 }

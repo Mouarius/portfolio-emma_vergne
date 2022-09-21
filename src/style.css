@@ -22,12 +22,16 @@ html {
     overflow: hidden;
 }
 
+h1,
+h2 {
+    font-family: "Space Grotesk", serif;
+    font-weight: 600;
+}
+
 h1 {
-    font-family: "Inknut Antiqua", serif;
     font-size: 1.8rem;
 }
 h2 {
-    font-family: "Inknut Antiqua", serif;
     font-size: 1.4rem;
     cursor: default;
 }

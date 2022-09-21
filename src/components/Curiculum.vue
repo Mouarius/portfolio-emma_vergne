@@ -67,7 +67,7 @@ onMounted(() => {
         line-break: normal;
         max-width: 56rem;
         font-size: 1.8rem;
-        line-height: 120%;
+        line-height: 100%;
         margin: 0 1.4rem;
         margin-top: 3rem;
 
@@ -80,10 +80,9 @@ onMounted(() => {
             width: 48rem;
         }
         .prompt-line {
-            font-family: "Inknut Antiqua", sans-serif;
-            font-weight: 700;
-            margin-bottom: 1.2rem;
-
+            font-family: "Public Sans", sans-serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
             a {
                 color: rgb(150, 148, 255);
                 text-shadow: -2px 2px rgb(23, 23, 31);
@@ -99,6 +98,7 @@ onMounted(() => {
                 border-bottom: dotted 4px black;
                 height: 100%;
                 bottom: 0.3rem;
+                font-family: "Space Grotesk";
             }
             .fill-in {
                 display: inline-block;
