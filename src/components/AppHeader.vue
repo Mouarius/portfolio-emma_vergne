@@ -80,8 +80,8 @@ const toggleMenu = () => {
         <router-link class="link" to="/"><h1 id="page-title">Emma Vergne</h1></router-link>
         <nav>
             <button class="toggle-menu-icon" v-if="menuIsSmall" @click="toggleMenu">
-                <font-awesome-icon v-if="!menuIsOpened" icon="fa-solid fa-bars"> </font-awesome-icon>
-                <font-awesome-icon v-else icon="fa-solid fa-xmark"></font-awesome-icon>
+                <img v-if="!menuIsOpened" src="../assets/icon-menu.svg" />
+                <img v-else src="../assets/icon-close.svg" />
             </button>
             <transition @enter="onBeforeEnter" @leave="onLeave" name="fade">
                 <ul v-if="menuIsOpened && menuIsSmall" class="menu-small">
@@ -119,7 +119,7 @@ const toggleMenu = () => {
     z-index: 10;
     left: 0;
     right: 0;
-    padding: 0 1rem;
+    padding: 0 1.4rem;
     padding-bottom: 2rem;
     padding-top: 1.8rem;
     height: 6rem;
@@ -198,9 +198,9 @@ const toggleMenu = () => {
             text-align: center;
             display: flex;
             align-items: center;
+            width: 32px;
+            height: 32px;
             justify-content: center;
-            height: 1.8rem;
-            width: 1.8rem;
         }
         .instagram {
             color: black;

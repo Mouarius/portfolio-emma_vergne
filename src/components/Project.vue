@@ -1,7 +1,8 @@
 <script setup>
-import { onMounted, onUnmounted, reactive, ref, shallowRef, watch, watchEffect } from "vue";
+import { onBeforeUnmount, onMounted, onUnmounted, reactive, ref, shallowRef, watch, watchEffect } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { projectList } from "../data/projects";
+import gsap from "gsap";
 
 import ProjectHeader from "./ProjectHeader.vue";
 import ProjectFooter from "./ProjectFooter.vue";
@@ -49,6 +50,17 @@ const toPrevProject = () => {
     scrollTop();
 };
 
+const closeProject = () => {
+    console.log("Closing project");
+    gsap.to(document.querySelector("#project-overlay"), {
+        opacity: 0,
+        duration: 0.4,
+        onComplete: () => {
+            router.push("/projets/");
+        },
+    });
+};
+
 watch(
     () => route.params,
     () => {
@@ -68,8 +80,11 @@ onMounted(() => {
     project.value = projectList.find((p) => p.id === route.params.project_id);
     initialScroll.value = window.scrollY;
     scrollTop();
-    // overlayElement.value = document.getElementById("project-overlay");
     document.addEventListener("scroll", updateScroll);
+    gsap.to(document.querySelector("#project-overlay"), {
+        opacity: 1,
+        duration: 0.4,
+    });
 });
 
 onUnmounted(() => {
@@ -80,9 +95,18 @@ onUnmounted(() => {
 
 <template>
     <div id="project-overlay" class="overlay">
-        <button @click="scrollTop" v-if="goTopButton" id="go-top"><font-awesome-icon icon="fa-solid fa-chevron-up" fixed-width size="xl" /></button>
+        <button @click="scrollTop" v-if="goTopButton" id="go-top">
+            <img src="../assets/icon-chevron-up-white.svg" alt="" />
+        </button>
         <article>
-            <ProjectHeader :title="project.title" :subtitle="project.subtitle" :information="project.information.description" :date="project.information.date" :projectId="project.id" />
+            <ProjectHeader
+                :title="project.title"
+                :subtitle="project.subtitle"
+                :information="project.information.description"
+                :date="project.information.date"
+                :projectId="project.id"
+                :closeProject="closeProject"
+            />
             <div class="article-body">
                 <ComponentToRender></ComponentToRender>
             </div>
@@ -104,6 +128,7 @@ onUnmounted(() => {
     width: 48px;
     background-color: rgb(11, 11, 11);
     color: white;
+
     border: none;
     border-radius: 100%;
 }
@@ -118,6 +143,8 @@ onUnmounted(() => {
     padding: 0 1.2rem;
     padding-bottom: 8rem;
 
+    opacity: 0;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -128,8 +155,6 @@ button.back {
     align-items: center;
     justify-content: center;
     font-size: 32px;
-    height: 32px;
-    width: 32px;
     box-sizing: border-box;
     border: none;
     background: none;
@@ -164,38 +189,6 @@ article {
         width: 100%;
     }
 
-    header {
-        display: flex;
-        box-sizing: border-box;
-        padding-top: 2rem;
-        padding-bottom: 5rem;
-        height: 100vh;
-        flex-direction: column;
-        align-items: flex-start;
-        width: 100%;
-
-        .cover-image {
-            object-fit: cover;
-            width: 100%;
-            height: 70%;
-        }
-        .down {
-            cursor: pointer;
-            background: none;
-            border: none;
-            position: absolute;
-            text-align: center;
-            bottom: 4vh;
-            width: 100%;
-        }
-        h1 {
-            margin-bottom: 1rem;
-            margin-top: 2rem;
-        }
-        .information {
-            margin-top: 0.4rem;
-        }
-    }
     .article-body {
         padding-top: 4rem;
         display: grid;

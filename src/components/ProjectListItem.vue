@@ -24,7 +24,7 @@ li {
     min-height: 220px;
     aspect-ratio: 1 / 1;
 
-    cursor: pointer;
+    cursor: none;
 
     .mask {
         display: flex;

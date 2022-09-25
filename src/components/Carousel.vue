@@ -6,20 +6,19 @@ import offrandeUrl from "../assets/img/offrande/offrande0-xlarge.jpg";
 import dzume1Url from "../assets/img/dzume/dzume4-xlarge.jpg";
 import dzume2Url from "../assets/img/dzume/dzume11-xlarge.jpg";
 import gelificationUrl from "../assets/img/edition_gelification/edition_gelification4-xlarge.jpg";
+import { useRouter } from "vue-router";
 
 const delay = 10000;
+const router = useRouter();
 
 const images = [bucheUrl, offrandeUrl, dzume1Url, dzume2Url, gelificationUrl];
 const slideImages = images.map((img) => {
-    return { src: img, href: img.match(/(\w+)-/)[1].slice(0, -1) };
+    return { src: img, href: `/projets/${img.match(/(\w+)-/)[1].slice(0, -1)}` };
 });
 
 const state = reactive({
     transitioning: false,
     slides: slideImages,
-    //TODO: make an easier way to modify the images (loading them from json file easily editable ?)
-    //TODO: make a random order for the photos
-    //! Attention ! Importer les images une par une ! Je ne sais pas comment faire autrement...
     innerStyles: {},
     width: 0,
     height: 0,
@@ -73,6 +72,10 @@ function previous() {
     }, 1200);
 }
 
+function goToProject(link) {
+    return router.push(link);
+}
+
 function moveLeft() {
     state.innerStyles = { transform: `translateX(-${2 * state.step}px)` };
 }
@@ -88,14 +91,14 @@ function resetTranslation() {
 <template>
     <div class="carousel">
         <div class="inner" :style="state.innerStyles">
-            <img v-for="(slide, index) in state.slides" class="slide" :src="slide.src" :key="index" :style="{ width: `${state.width}px` }" />
+            <img @click="goToProject(slide.href)" v-for="(slide, index) in state.slides" class="slide" :src="slide.src" :key="index" :style="{ width: `${state.width}px` }" />
         </div>
-        <button class="prev" @click="previous"><font-awesome-icon icon="fa-solid fa-chevron-left" fixed-width size="xl" /></button>
-        <button class="next" @click="next"><font-awesome-icon icon="fa-solid fa-chevron-right" fixed-width size="xl" /></button>
+        <button class="prev" @click="previous"><img src="../assets/icon-chevron-left.svg" alt="" /></button>
+        <button class="next" @click="next"><img src="../assets/icon-chevron-right.svg" alt="" /></button>
     </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .carousel {
     overflow: hidden;
     position: relative;
@@ -119,6 +122,9 @@ function resetTranslation() {
     box-sizing: border-box;
     width: 100vw;
     height: 100vh;
+    &:hover {
+        cursor: pointer;
+    }
 }
 button {
     cursor: pointer;

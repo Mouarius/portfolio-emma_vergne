@@ -70,6 +70,7 @@ onMounted(() => {
         line-height: 100%;
         margin: 0 1.4rem;
         margin-top: 3rem;
+        padding: 3rem 2rem;
 
         li:last-child {
             margin-top: 6rem;
@@ -80,7 +81,7 @@ onMounted(() => {
             width: 48rem;
         }
         .prompt-line {
-            font-family: "Public Sans", sans-serif;
+            font-family: "Space Grotesk", sans-serif;
             font-weight: 600;
             margin-bottom: 1rem;
             a {
@@ -127,7 +128,7 @@ onMounted(() => {
             }
         }
         @media screen and (min-width: 756px) {
-            font-size: 2.6rem;
+            font-size: 2rem;
             margin-top: 4rem;
             li {
                 margin-bottom: 2rem;

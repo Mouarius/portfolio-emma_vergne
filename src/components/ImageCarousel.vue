@@ -92,8 +92,8 @@ function resetTranslation() {
         <div class="inner" :style="state.innerStyles">
             <img v-for="(slide, index) in state.slides" class="slide" :src="slide" @click="displayImage(slide)" :key="index" :style="{ width: `${state.width}px` }" />
         </div>
-        <button class="prev" @click="previous"><font-awesome-icon icon="fa-solid fa-chevron-left" /></button>
-        <button class="next" @click="next"><font-awesome-icon icon="fa-solid fa-chevron-right" /></button>
+        <button class="prev" @click="previous"><img src="../assets/icon-chevron-left.svg" alt="" /></button>
+        <button class="next" @click="next"><img src="../assets/icon-chevron-right.svg" alt="" /></button>
         <div @click="hideImage" v-if="state.displayedImage" class="big-image">
             <img :src="state.displayedImage" alt="" />
         </div>

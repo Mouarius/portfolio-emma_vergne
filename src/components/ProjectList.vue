@@ -1,11 +1,37 @@
 <script setup>
 import ProjectListItem from "./ProjectListItem.vue";
 import { projectList } from "../data/projects";
+import { ref } from "vue";
+import Spring from "./UI/Spring.vue";
+
+let springVisible = ref(false);
+
+function activateSpring() {
+    return (springVisible.value = true);
+}
 </script>
 
 <template>
+    <Spring v-if="springVisible" />
+
     <ul class="project-list">
-        <ProjectListItem v-for="project in projectList" :key="project.id" :project-id="project.id" :name="project.name" :image="project.img" />
+        <ProjectListItem
+            v-for="project in projectList"
+            :key="project.id"
+            :project-id="project.id"
+            :name="project.name"
+            :image="project.img"
+            @mouseenter="
+                () => {
+                    springVisible = true;
+                }
+            "
+            @mouseleave="
+                () => {
+                    springVisible = false;
+                }
+            "
+        />
     </ul>
 </template>
 
