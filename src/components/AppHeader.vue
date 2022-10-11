@@ -135,6 +135,7 @@ const toggleMenu = () => {
         padding-top: 1.8rem;
     }
     #page-title {
+        font-family: "Inknut Antiqua", serif;
         font-weight: 600;
         text-shadow: 2px 2px rgb(230, 230, 230);
     }
