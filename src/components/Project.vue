@@ -1,5 +1,5 @@
 <script setup>
-import { onBeforeUnmount, onMounted, onUnmounted, reactive, ref, shallowRef, watch, watchEffect } from "vue";
+import { onMounted, onUnmounted, ref, shallowRef, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { projectList } from "../data/projects";
 import gsap from "gsap";
@@ -51,10 +51,9 @@ const toPrevProject = () => {
 };
 
 const closeProject = () => {
-    console.log("Closing project");
     gsap.to(document.querySelector("#project-overlay"), {
         opacity: 0,
-        duration: 0.4,
+        duration: 0.6,
         onComplete: () => {
             router.push("/projets/");
         },
@@ -83,7 +82,7 @@ onMounted(() => {
     document.addEventListener("scroll", updateScroll);
     gsap.to(document.querySelector("#project-overlay"), {
         opacity: 1,
-        duration: 0.4,
+        duration: 0.6,
     });
 });
 

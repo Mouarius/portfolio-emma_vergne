@@ -44,7 +44,11 @@ li {
     }
     h2 {
         text-align: center;
-        cursor: pointer;
+        cursor: none;
+        transition: transform 0.2s ease;
+        &:hover {
+            transform: scale(1.1) rotate(-6deg);
+        }
     }
 }
 </style>

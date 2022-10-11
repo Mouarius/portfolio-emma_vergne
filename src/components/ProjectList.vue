@@ -5,10 +5,6 @@ import { ref } from "vue";
 import Spring from "./UI/Spring.vue";
 
 let springVisible = ref(false);
-
-function activateSpring() {
-    return (springVisible.value = true);
-}
 </script>
 
 <template>

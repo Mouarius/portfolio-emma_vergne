@@ -18,11 +18,14 @@ const routes = [
     {
         path: "/projets",
         component: ProjectsPage,
+        children: [
+            {
+                path: ":project_id",
+                component: Project,
+            },
+        ],
     },
-    {
-        path: "/projets/:project_id",
-        component: Project,
-    },
+
     { path: "/contact", component: ContactPage },
 ];
 

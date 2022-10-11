@@ -1,5 +1,6 @@
 <script setup>
 import { onBeforeMount, onMounted, onUnmounted, reactive, ref } from "vue";
+import ChevronButton from "./UI/ChevronButton.vue";
 
 const props = defineProps(["delay", "imagesUrl"]);
 
@@ -92,8 +93,8 @@ function resetTranslation() {
         <div class="inner" :style="state.innerStyles">
             <img v-for="(slide, index) in state.slides" class="slide" :src="slide" @click="displayImage(slide)" :key="index" :style="{ width: `${state.width}px` }" />
         </div>
-        <button class="prev" @click="previous"><img src="../assets/icon-chevron-left.svg" alt="" /></button>
-        <button class="next" @click="next"><img src="../assets/icon-chevron-right.svg" alt="" /></button>
+        <ChevronButton class="button-prev" direction="left" onclick="prev" />
+        <ChevronButton class="button-next" direction="right" onclick="next" />
         <div @click="hideImage" v-if="state.displayedImage" class="big-image">
             <img :src="state.displayedImage" alt="" />
         </div>
@@ -145,18 +146,14 @@ function resetTranslation() {
         filter: brightness(90%);
     }
 }
-button {
+.chevron-button {
     position: absolute;
     top: 50%;
-    cursor: pointer;
-    background: none;
-    border: none;
-    font-size: 24px;
 }
-.prev {
+.button-prev {
     left: 24px;
 }
-.next {
+.button-next {
     right: 24px;
 }
 @media screen and (min-width: 768px) {

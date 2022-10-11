@@ -7,6 +7,7 @@ import dzume1Url from "../assets/img/dzume/dzume4-xlarge.jpg";
 import dzume2Url from "../assets/img/dzume/dzume11-xlarge.jpg";
 import gelificationUrl from "../assets/img/edition_gelification/edition_gelification4-xlarge.jpg";
 import { useRouter } from "vue-router";
+import ChevronButton from "./UI/ChevronButton.vue";
 
 const delay = 10000;
 const router = useRouter();
@@ -93,8 +94,8 @@ function resetTranslation() {
         <div class="inner" :style="state.innerStyles">
             <img @click="goToProject(slide.href)" v-for="(slide, index) in state.slides" class="slide" :src="slide.src" :key="index" :style="{ width: `${state.width}px` }" />
         </div>
-        <button class="prev" @click="previous"><img src="../assets/icon-chevron-left.svg" alt="" /></button>
-        <button class="next" @click="next"><img src="../assets/icon-chevron-right.svg" alt="" /></button>
+        <ChevronButton class="prev" :onclick="previous" direction="left" />
+        <ChevronButton class="next" :onclick="next" direction="right" />
     </div>
 </template>
 

@@ -131,7 +131,7 @@ const toggleMenu = () => {
     box-sizing: border-box;
 
     @media screen and (min-width: 576px) {
-        padding: 0 2rem;
+        padding: 0 1.4rem;
         padding-top: 1.8rem;
     }
     #page-title {

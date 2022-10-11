@@ -40,6 +40,7 @@ function onButtonHover(e) {
     .arrow {
         transition: transform 0.4s ease;
     }
+
     .right-arrow.active {
         transform: translateX(10px);
     }
