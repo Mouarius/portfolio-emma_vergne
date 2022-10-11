@@ -1,11 +1,16 @@
 <script setup>
-import { onMounted, onUnmounted, reactive, ref } from "vue";
+import { onMounted, onUnmounted, reactive, ref, watch } from "vue";
 import { gsap } from "gsap";
+import { useRoute } from "vue-router";
 
 const dim = reactive({ w: 0, h: 0 });
 
+const route = useRoute();
+
 const menuIsSmall = ref(false);
 const menuIsOpened = ref(false);
+
+const isBackgroundOpaque = ref(false);
 
 const navLinks = reactive([
     {
@@ -38,6 +43,16 @@ const updateDimensions = () => {
     }
     menuIsSmall.value = false;
 };
+
+watch(
+    () => route.params,
+    () => {
+        if (route.path === "/projets") {
+            return (isBackgroundOpaque.value = true);
+        }
+        isBackgroundOpaque.value = false;
+    }
+);
 
 onMounted(() => {
     updateDimensions();
@@ -76,7 +91,7 @@ const toggleMenu = () => {
 </script>
 
 <template>
-    <header id="page-header">
+    <header id="page-header" :class="{ opaque: isBackgroundOpaque }">
         <router-link class="link" to="/"><h1 id="page-title">Emma Vergne</h1></router-link>
         <nav>
             <button class="toggle-menu-icon" v-if="menuIsSmall" @click="toggleMenu">
@@ -113,19 +128,19 @@ const toggleMenu = () => {
 </style>
 
 <style lang="scss" scoped>
+.opaque {
+    background-color: white;
+}
 #page-header {
     position: fixed;
-    display: block;
     z-index: 10;
     left: 0;
     right: 0;
-    padding: 0 1.4rem;
-    padding-bottom: 2rem;
-    padding-top: 1.8rem;
-    height: 6rem;
+    padding: 1.4rem 1.4rem;
+    padding-bottom: 1rem;
     top: 0;
     display: flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: space-between;
 
     box-sizing: border-box;
@@ -137,6 +152,7 @@ const toggleMenu = () => {
     #page-title {
         font-family: "Inknut Antiqua", serif;
         font-weight: 600;
+        margin-bottom: 0.4rem;
         text-shadow: 2px 2px rgb(230, 230, 230);
     }
     a {

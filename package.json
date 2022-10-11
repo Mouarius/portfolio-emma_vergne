@@ -7,7 +7,7 @@
         "dev": "vite",
         "build": "vite build",
         "preview": "vite preview",
-        "deploy": "vite build ; cp -r ./dist/ ../portfolio-emma_vergne-production ; cd ../portfolio-emma_vergne-production ; git add . ; git commit -m 'Deploy' ; git push"
+        "deploy": "vite build ; cp -r ./dist/ ../portfolio-emma_vergne-production : cd ../portfolio-emma_vergne-production ; git add . ; git commit -m 'Deploy'"
     },
     "dependencies": {
         "@fortawesome/fontawesome-svg-core": "^6.2.0",

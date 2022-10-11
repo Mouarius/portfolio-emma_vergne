@@ -1,5 +1,5 @@
 <script setup>
-import { onBeforeMount, onMounted, onUnmounted, reactive, ref } from "vue";
+import { onBeforeMount, onMounted, onUnmounted, reactive } from "vue";
 
 import bucheUrl from "../assets/img/buche/buche0-xlarge.jpg";
 import offrandeUrl from "../assets/img/offrande/offrande0-xlarge.jpg";
@@ -94,8 +94,8 @@ function resetTranslation() {
         <div class="inner" :style="state.innerStyles">
             <img @click="goToProject(slide.href)" v-for="(slide, index) in state.slides" class="slide" :src="slide.src" :key="index" :style="{ width: `${state.width}px` }" />
         </div>
-        <ChevronButton class="prev" :onclick="previous" direction="left" />
-        <ChevronButton class="next" :onclick="next" direction="right" />
+        <ChevronButton class="prev" :on-click="previous()" direction="left" />
+        <ChevronButton class="next" :on-click="next()" direction="right" />
     </div>
 </template>
 

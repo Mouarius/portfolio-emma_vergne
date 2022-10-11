@@ -24,7 +24,7 @@ onMounted(() => {
             </li>
             <li class="prompt-line">
                 et je suis
-                <div class="field"><em class="fill-in rot-left">Designeuse Culinaire</em></div>
+                <div class="field"><em class="fill-in rot-left">Designer Culinaire</em></div>
             </li>
             <li class="prompt-line">
                 diplômée de
@@ -99,7 +99,7 @@ onMounted(() => {
                 border-bottom: dotted 4px black;
                 height: 100%;
                 bottom: 0.3rem;
-                font-family: "Space Grotesk";
+                font-family: "Inknut Antiqua";
             }
             .fill-in {
                 display: inline-block;
