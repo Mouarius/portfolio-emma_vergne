@@ -94,8 +94,8 @@ function resetTranslation() {
         <div class="inner" :style="state.innerStyles">
             <img @click="goToProject(slide.href)" v-for="(slide, index) in state.slides" class="slide" :src="slide.src" :key="index" :style="{ width: `${state.width}px` }" />
         </div>
-        <ChevronButton class="prev" :on-click="previous()" direction="left" />
-        <ChevronButton class="next" :on-click="next()" direction="right" />
+        <ChevronButton class="prev" :on-click="previous" direction="left" />
+        <ChevronButton class="next" :on-click="next" direction="right" />
     </div>
 </template>
 
