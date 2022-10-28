@@ -3,11 +3,12 @@ import coverDzume from "../assets/img/dzume/dzume4-small.jpg";
 import coverOffrande from "../assets/img/offrande/offrande0-small.jpg";
 import coverEstran from "../assets/img/carte_estran/carte_estran1-small.jpg";
 import coverBuche from "../assets/img/buche/buche0-small.jpg";
-import coverGelification from "../assets/img/edition_gelification/edition_gelification6-small.jpg";
+import coverGelification from "../assets/img/edition_gelification/edition_gelification8-small.jpg";
 import DzumeVue from "../components/Pages/Projets/Dzume.vue";
 import MaifVue from "../components/Pages/Projets/Maif.vue";
 import OffrandeEpicurienneVue from "../components/Pages/Projets/OffrandeEpicurienne.vue";
 import CarteEstranVue from "../components/Pages/Projets/CarteEstran.vue";
+import GelificationVue from "../components/Pages/Projets/Gelification.vue";
 
 import WorkInProgressVue from "../components/Pages/Projets/WorkInProgress.vue";
 
@@ -80,9 +81,9 @@ export const projectList = [
         subtitle: "Réalisation de micro-éditions pour des procédés culinaires",
         img: coverGelification,
         information: {
-            date: "2020",
-            description: "A compléter",
+            date: "2021",
+            description: "Travail en commun de graphisme par le master Design et Culinaire de Reims.",
         },
-        component: WorkInProgressVue,
+        component: GelificationVue,
     },
 ];
